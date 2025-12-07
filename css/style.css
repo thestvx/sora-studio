@@ -1,16 +1,22 @@
-/* =======================================
-   Sora Studio – Main Stylesheet (Updated Colors)
+/* css/style.css – Sora Studio (Blue Theme #171e93 & White)
    ======================================= */
 
 /* ===================================
-   1. CSS Custom Properties (Colors Updated)
+   1. CSS Custom Properties
    =================================== */
 :root {
+  /* Brand Colors */
   --primary: #171e93;
-  --primary-light: #3a45d2;
+  --primary-light: #4f5dff;
   --primary-dark: #0f1461;
   --white: #ffffff;
 
+  /* Legacy aliases (للتوافق مع الأكواد داخل الصفحات الأخرى) */
+  --cyan: var(--primary);
+  --cyan-light: #e0e7ff;
+  --cyan-dark: var(--primary-dark);
+
+  /* Grays */
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -22,17 +28,21 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
 
+  /* Radius & Shadows */
   --radius: 16px;
   --radius-sm: 8px;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
+  /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===================================
-   2. Base
+   2. Base Styles with GE SS Two
    =================================== */
 * {
   margin: 0;
@@ -40,45 +50,152 @@
   box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
 
 body {
-  font-family: 'GE SS Two', sans-serif;
-  background: var(--white);
+  font-family: 'GE SS Two', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
   color: var(--gray-800);
+  background: var(--white);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'GE SS Two', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Body text */
+p, span, div, li, a, button, input, textarea, select {
+  font-family: 'GE SS Two', 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+strong, b, .font-bold {
+  font-family: 'GE SS Two', 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+/* Arabic text optimizations */
+.arabic-text {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  letter-spacing: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
 }
 
 /* ===================================
-   3. Navigation
+   3. Layout Utilities
+   =================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.bg-gray {
+  background: var(--gray-50);
+}
+
+/* ===================================
+   4. Loader
+   =================================== */
+.loader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-circle {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================
+   5. Navigation
    =================================== */
 .nav {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--gray-200);
-  width: 100%;
-  z-index: 100;
+  transition: var(--transition);
 }
 
 .nav-container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 24px;
-  height: 80px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  height: 80px;
 }
 
 .logo {
   font-size: 32px;
   font-weight: 700;
   color: var(--primary);
+  letter-spacing: -0.02em;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  color: var(--primary-light);
 }
 
 .nav-links {
   display: flex;
+  list-style: none;
   gap: 40px;
 }
 
@@ -86,143 +203,577 @@ body {
   color: var(--gray-600);
   font-weight: 500;
   position: relative;
+  transition: var(--transition);
+  letter-spacing: 0.5px;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link[aria-current="page"] {
   color: var(--primary);
 }
 
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  width: 100%;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.mobile-menu-btn span {
+  width: 25px;
+  height: 3px;
+  background: var(--gray-900);
+  margin: 3px 0;
+  transition: var(--transition);
+}
+
+/* Burger → X */
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 /* ===================================
-   4. Buttons (Recolored)
+   6. Hero Section
+   =================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.08" points="0,1000 1000,0 1000,1000"/><polygon fill="%23ffffff" fill-opacity="0.04" points="0,1000 0,0 1000,1000"/></svg>');
+  background-size: cover;
+  opacity: 0.4;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: var(--white);
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: 24px;
+  background: linear-gradient(45deg, #ffffff, #e0e7ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heroFadeIn 1s ease-out;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  margin-bottom: 48px;
+  opacity: 0.9;
+  animation: heroFadeIn 1s ease-out 0.2s both;
+  letter-spacing: 0.5px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  animation: heroFadeIn 1s ease-out 0.4s both;
+  flex-wrap: wrap;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Scroll Indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.scroll-mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.scroll-wheel {
+  width: 4px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0; }
+}
+
+/* ===================================
+   7. Buttons
    =================================== */
 .btn {
   padding: 16px 40px;
   border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn-primary {
   background: var(--primary);
   color: var(--white);
+  box-shadow: 0 4px 14px 0 rgb(23 30 147 / 40%);
 }
 
 .btn-primary:hover {
   background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgb(23 30 147 / 55%);
 }
 
 .btn-secondary {
+  background: transparent;
+  color: var(--white);
   border: 2px solid var(--white);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   8. Section Headers
+   =================================== */
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 24px;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--gray-600);
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: 0.5px;
+}
+
+/* ===================================
+   9. Portfolio
+   =================================== */
+.portfolio-filter {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 12px 32px;
+  border: 2px solid var(--gray-200);
+  background: var(--white);
+  border-radius: 50px;
+  color: var(--gray-600);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  left: 0;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: var(--white);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px 0 rgb(23 30 147 / 40%);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+.portfolio-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 280px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.portfolio-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.portfolio-item:hover .portfolio-image::after {
+  transform: translateX(100%);
+}
+
+.portfolio-content {
+  padding: 32px;
+}
+
+.portfolio-title {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--gray-900);
+  font-weight: 700;
+}
+
+.portfolio-description {
+  color: var(--gray-600);
+  margin-bottom: 20px;
+}
+
+.portfolio-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px 16px;
+  background: var(--gray-100);
+  color: var(--primary);
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.portfolio-item:hover .tag {
+  background: var(--primary);
   color: var(--white);
 }
 
 /* ===================================
-   5. Hero Section (Gradient Updated)
+   10. Team
    =================================== */
-.hero {
-  height: 100vh;
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.team-member {
+  text-align: center;
+  padding: 40px 32px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-member:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.member-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin: 0 auto 24px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 3rem;
+  color: var(--white);
+  font-weight: 700;
   position: relative;
-  color: var(--white);
+  overflow: hidden;
+  transition: var(--transition);
 }
 
-.hero-title {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 700;
+.member-avatar::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
 }
 
-.hero-subtitle {
+.team-member:hover .member-avatar::before {
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+.team-member:hover .member-avatar {
+  transform: scale(1.05);
+}
+
+.member-name {
   font-size: 1.5rem;
-  opacity: 0.9;
-}
-
-/* ===================================
-   6. Section Headers
-   =================================== */
-.section-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  color: var(--primary);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
+  color: var(--gray-900);
   font-weight: 700;
 }
 
-.section-subtitle {
-  color: var(--gray-600);
-}
-
-/* ===================================
-   7. Portfolio (Recolored)
-   =================================== */
-.filter-btn {
-  border: 2px solid var(--gray-200);
-  background: var(--white);
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--white);
-}
-
-.portfolio-item {
-  box-shadow: var(--shadow-md);
-  border-radius: var(--radius);
-}
-
-.tag {
-  background: var(--gray-100);
-  color: var(--primary);
-}
-
-/* ===================================
-   8. Team
-   =================================== */
 .member-role {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.member-bio {
+  color: var(--gray-600);
+  line-height: 1.6;
 }
 
 /* ===================================
-   9. CTA Section (Gradient Updated)
+   11. CTA Section
    =================================== */
 .cta-section {
+  padding: 100px 0;
   background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   color: var(--white);
   text-align: center;
-  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.06" points="0,1000 1000,0 1000,1000"/></svg>');
+  background-size: cover;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
 }
 
 /* ===================================
-   10. Footer
+   12. Footer
    =================================== */
 .footer {
   background: var(--primary-dark);
   color: var(--white);
+  padding: 80px 0 40px;
   text-align: center;
-  padding: 80px 0;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .footer-logo {
   font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
   background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.footer-text {
+  color: var(--gray-100);
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+}
+
+.social-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.social-link {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background: var(--primary-light);
+  transform: translateY(-4px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 32px;
+  color: #e5e7eb;
+  letter-spacing: 0.5px;
 }
 
 /* ===================================
-   11. Scroll Animation
+   13. Scroll Animations
    =================================== */
 .scroll-fade-in {
   opacity: 0;
   transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-fade-in.visible {
@@ -231,9 +782,258 @@ body {
 }
 
 /* ===================================
-   12. Mobile
+   14. Responsive Design
    =================================== */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hero-title { font-size: 2.5rem; }
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    left: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 24px 24px;
+    box-shadow: var(--shadow-md);
+    display: none;
+    z-index: 40;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .portfolio-filter {
+    padding: 0 20px;
+  }
+
+  .filter-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    padding: 14px 32px;
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .portfolio-image {
+    height: 200px;
+  }
+
+  .member-avatar {
+    width: 120px;
+    height: 120px;
+    font-size: 2rem;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ===================================
+   15. Dark Mode Support
+   =================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gray-50: #111827;
+    --gray-100: #1f2937;
+    --gray-200: #374151;
+    --gray-300: #4b5563;
+    --gray-600: #9ca3af;
+    --gray-800: #f3f4f6;
+    --gray-900: #f9fafb;
+    --white: #111827;
+  }
+
+  .nav {
+    background: rgba(15, 21, 39, 0.96);
+    border-bottom-color: var(--gray-700);
+  }
+
+  .portfolio-item,
+  .team-member,
+  .filter-btn {
+    background: var(--gray-100);
+  }
+
+  .filter-btn {
+    border-color: var(--gray-300);
+    color: var(--gray-600);
+  }
+}
+
+/* ===================================
+   16. Print Styles
+   =================================== */
+@media print {
+  .nav, .footer, .btn, .hero-scroll-indicator, .mobile-menu-btn {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  .section {
+    padding: 20px 0;
+  }
+  
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* ===================================
+   17. High DPI / Retina Displays
+   =================================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo {
+    font-weight: 700;
+  }
+  
+  .btn {
+    font-weight: 700;
+  }
+}
+
+/* ===================================
+   18. Reduced Motion Support
+   =================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===================================
+   19. Focus Styles (Accessibility)
+   =================================== */
+*:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.btn:focus,
+.filter-btn:focus,
+.nav-link:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ===================================
+   20. Typography Enhancements & Utilities
+   =================================== */
+.hero-title,
+.section-title,
+.logo,
+.btn,
+.filter-btn,
+.member-name,
+.portfolio-title,
+.cta-section h2,
+.footer-logo {
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+body,
+p,
+span,
+div,
+li,
+a,
+button,
+input,
+textarea,
+select,
+.section-subtitle,
+.hero-subtitle,
+.member-bio,
+.portfolio-description,
+.footer-text,
+.tag {
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 400;
+}
+
+strong,
+b,
+.member-role,
+.btn {
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.hidden { display: none !important; }
+.visible { display: block !important; }
+
+/* Loading Animation Helper */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Smooth transitions helper (بدل ما نطبّقها على كل العناصر) */
+.smooth-transition {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
