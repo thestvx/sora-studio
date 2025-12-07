@@ -7,17 +7,17 @@
   <title>عنّا | Sora Studio - صورة استوديو</title>
 
   <!-- Meta SEO -->
-  <meta name="description" content="تعرف على قصة Sora Studio، مهمتنا، رؤيتنا، والتطور الذي مررنا به منذ ٢٠١٩.">
+  <meta name="description" content="تعرف على قصة Sora Studio، مهمتنا ورؤيتنا وشركائنا. استوديو إبداعي في الرياض متخصص في التصوير، التصميم وإنتاج الفيديو.">
   <meta name="keywords" content="عنّا, Sora Studio, صورة استوديو, استوديو تصوير, تصميم, فيديو, الرياض">
   <meta name="author" content="Sora Studio">
 
   <!-- Open Graph -->
   <meta property="og:title" content="عنّا | Sora Studio - صورة استوديو">
-  <meta property="og:description" content="نصنع القصص التي تُرى وتُتذكر. تعرف على قصة Sora Studio ومهمتنا ورؤيتنا.">
+  <meta property="og:description" content="نصنع القصص التي تُرى وتُتذكر. تعرّف على قصة Sora Studio ومهمتنا ورؤيتنا.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_SA">
 
-  <!-- GE SS Two Font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=GE+SS+Two:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
@@ -25,7 +25,7 @@
 
   <style>
     .about-hero {
-      background: #171e93;
+      background: var(--primary);
       color: white;
       padding: 140px 0 80px;
       text-align: center;
@@ -39,7 +39,6 @@
       inset: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,1000 1000,0 1000,1000"/></svg>');
       background-size: cover;
-      opacity: 0.8;
     }
 
     .about-hero-content {
@@ -51,6 +50,7 @@
       font-size: 3.5rem;
       margin-bottom: 16px;
       animation: fadeInDown 1s ease;
+      font-weight: 700;
     }
 
     .about-hero p {
@@ -72,7 +72,8 @@
     .story-content h2 {
       font-size: 2.5rem;
       margin-bottom: 24px;
-      color: var(--gray-900);
+      color: var(--primary);
+      font-weight: 700;
     }
 
     .story-content p {
@@ -117,7 +118,7 @@
       right: -12px;
       width: 24px;
       height: 24px;
-      background: var(--cyan);
+      background: var(--primary);
       border-radius: 50%;
       border: 4px solid white;
       box-shadow: 0 0 0 4px var(--gray-100);
@@ -136,7 +137,7 @@
     }
 
     .timeline-year {
-      color: var(--cyan);
+      color: var(--primary);
       font-weight: 700;
       margin-bottom: 8px;
     }
@@ -145,6 +146,7 @@
       font-size: 1.25rem;
       margin-bottom: 8px;
       color: var(--gray-900);
+      font-weight: 700;
     }
 
     .timeline-description {
@@ -170,18 +172,19 @@
     }
 
     .mission-card {
-      background: linear-gradient(135deg, #171e93, #0f1461);
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
       color: white;
     }
 
     .vision-card {
-      background: #111827;
+      background: var(--gray-900);
       color: white;
     }
 
     .mission-card h3, .vision-card h3 {
       font-size: 2rem;
       margin-bottom: 16px;
+      font-weight: 700;
     }
 
     .mission-card p, .vision-card p {
@@ -194,6 +197,18 @@
       padding: 80px 0;
       background: var(--gray-50);
       text-align: center;
+    }
+
+    .clients-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .clients-section p {
+      color: var(--gray-600);
+      margin-bottom: 48px;
     }
 
     .clients-grid {
@@ -212,14 +227,14 @@
       align-items: center;
       justify-content: center;
       height: 120px;
-      color: var(--gray-600);
       font-weight: 600;
+      color: var(--gray-600);
       transition: var(--transition);
     }
 
     .client-logo:hover {
-      transform: translateY(-2px);
       box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
 
     @media (max-width: 768px) {
@@ -250,6 +265,10 @@
       .mission-vision {
         grid-template-columns: 1fr;
         gap: 24px;
+      }
+
+      .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -360,7 +379,7 @@
         <div class="mission-vision">
           <div class="mission-card scroll-fade-in">
             <h3>مهمتنا</h3>
-            <p>تمكين العلامات التجارية من رواية قصصها بصرياً بأسلوب مبتكر واحترافي، نخلق من خلالها تجارب تُحفّز وتُلهم وتُحدث أثراً حقيقياً.</p>
+            <p>تمكين العلامات التجارية من رواية قصصها بصرياً بأسلوب مبتكر واحترافي، نخلق من خلالها تجارب تُحفز وتُلهم وتُحدث أثراً حقيقياً.</p>
           </div>
           <div class="vision-card scroll-fade-in">
             <h3>رؤيتنا</h3>
