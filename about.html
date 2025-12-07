@@ -7,13 +7,13 @@
   <title>عنّا | Sora Studio - صورة استوديو</title>
 
   <!-- Meta SEO -->
-  <meta name="description" content="تعرف على قصة Sora Studio، مهمتنا ورؤيتنا وشركائنا. استوديو إبداعي في الرياض متخصص في التصوير، التصميم وإنتاج الفيديو.">
+  <meta name="description" content="تعرف على قصة Sora Studio، مهمتنا، رؤيتنا، والتطور الذي مررنا به منذ ٢٠١٩.">
   <meta name="keywords" content="عنّا, Sora Studio, صورة استوديو, استوديو تصوير, تصميم, فيديو, الرياض">
   <meta name="author" content="Sora Studio">
 
   <!-- Open Graph -->
   <meta property="og:title" content="عنّا | Sora Studio - صورة استوديو">
-  <meta property="og:description" content="نصنع القصص التي تُرى وتُتذكر. تعرّف على قصة Sora Studio ومهمتنا ورؤيتنا.">
+  <meta property="og:description" content="نصنع القصص التي تُرى وتُتذكر. تعرف على قصة Sora Studio ومهمتنا ورؤيتنا.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_SA">
 
@@ -24,9 +24,8 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* أنماط خاصة بصفحة عنّا */
     .about-hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #171e93;
       color: white;
       padding: 140px 0 80px;
       text-align: center;
@@ -37,12 +36,10 @@
     .about-hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,1000 1000,0 1000,1000"/></svg>');
       background-size: cover;
+      opacity: 0.8;
     }
 
     .about-hero-content {
@@ -54,17 +51,12 @@
       font-size: 3.5rem;
       margin-bottom: 16px;
       animation: fadeInDown 1s ease;
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .about-hero p {
       font-size: 1.25rem;
       opacity: 0.9;
       animation: fadeInUp 1s ease 0.2s both;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .story-section {
@@ -81,9 +73,6 @@
       font-size: 2.5rem;
       margin-bottom: 24px;
       color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .story-content p {
@@ -91,8 +80,6 @@
       color: var(--gray-600);
       line-height: 1.8;
       margin-bottom: 32px;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .timeline {
@@ -120,18 +107,9 @@
       padding: 0 40px;
     }
 
-    .timeline-item:nth-child(odd) {
-      right: 0;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 0;
-      text-align: left;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      text-align: left;
-    }
+    .timeline-item:nth-child(odd) { right: 0; }
+    .timeline-item:nth-child(even) { left: 0; text-align: left; }
+    .timeline-item:nth-child(even) .timeline-content { text-align: left; }
 
     .timeline-dot {
       position: absolute;
@@ -160,24 +138,18 @@
     .timeline-year {
       color: var(--cyan);
       font-weight: 700;
-      font-size: 1.1rem;
       margin-bottom: 8px;
-      font-family: 'GE SS Two', sans-serif;
     }
 
     .timeline-title {
       font-size: 1.25rem;
       margin-bottom: 8px;
       color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
     }
 
     .timeline-description {
       color: var(--gray-600);
       line-height: 1.6;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .mission-vision-wrapper {
@@ -198,51 +170,30 @@
     }
 
     .mission-card {
-      background: linear-gradient(135deg, var(--cyan), var(--cyan-light));
+      background: linear-gradient(135deg, #171e93, #0f1461);
       color: white;
     }
 
     .vision-card {
-      background: var(--gray-900);
+      background: #111827;
       color: white;
     }
 
     .mission-card h3, .vision-card h3 {
       font-size: 2rem;
       margin-bottom: 16px;
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .mission-card p, .vision-card p {
       font-size: 1.1rem;
       line-height: 1.7;
       opacity: 0.9;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .clients-section {
       padding: 80px 0;
       background: var(--gray-50);
       text-align: center;
-    }
-
-    .clients-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-      color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .clients-section p {
-      color: var(--gray-600);
-      margin-bottom: 48px;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .clients-grid {
@@ -261,26 +212,20 @@
       align-items: center;
       justify-content: center;
       height: 120px;
-      font-weight: 600;
       color: var(--gray-600);
+      font-weight: 600;
       transition: var(--transition);
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .client-logo:hover {
-      box-shadow: var(--shadow-md);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     @media (max-width: 768px) {
-      .about-hero h1 {
-        font-size: 2.5rem;
-      }
+      .about-hero h1 { font-size: 2.5rem; }
 
-      .timeline::before {
-        right: 20px;
-      }
+      .timeline::before { right: 20px; }
 
       .timeline-item {
         width: 100%;
@@ -306,32 +251,16 @@
         grid-template-columns: 1fr;
         gap: 24px;
       }
-
-      .clients-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -349,7 +278,7 @@
         <li><a href="index.html#portfolio" class="nav-link">أعمالنا</a></li>
         <li><a href="index.html#team" class="nav-link">الفريق</a></li>
         <li><a href="about.html" class="nav-link" aria-current="page">عنّا</a></li>
-        <li><a href="index.html#contact" class="nav-link">تواصل</a></li>
+        <li><a href="contact.html" class="nav-link">تواصل</a></li>
       </ul>
       <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح وإغلاق قائمة الجوال">
         <span></span>
@@ -431,7 +360,7 @@
         <div class="mission-vision">
           <div class="mission-card scroll-fade-in">
             <h3>مهمتنا</h3>
-            <p>تمكين العلامات التجارية من رواية قصصها بصرياً بأسلوب مبتكر واحترافي، نخلق من خلالها تجارب تُحفز وتُلهم وتُحدث أثراً حقيقياً.</p>
+            <p>تمكين العلامات التجارية من رواية قصصها بصرياً بأسلوب مبتكر واحترافي، نخلق من خلالها تجارب تُحفّز وتُلهم وتُحدث أثراً حقيقياً.</p>
           </div>
           <div class="vision-card scroll-fade-in">
             <h3>رؤيتنا</h3>
