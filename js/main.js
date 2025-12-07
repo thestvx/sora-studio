@@ -1,4 +1,5 @@
-/* js/main.js – Sora Studio – نسخة لا تتوقف عند الخطأ */
+/* js/main.js – Sora Studio مع دعم GE SS Two
+   ======================================= */
 
 /* ===========================
    0. Safe Element Selector
@@ -190,4 +191,28 @@ document.addEventListener('DOMContentLoaded', () => {
       loader.classList.add('hidden');
     }
   }, 2000); // كحد أقصى 2 ثانية
+});
+
+/* ===========================
+   11. تحسينات إضافية للخط
+   =========================== */
+// إضافة كلاس arabic-text للعناصر التي تحتوي على نصوص عربية
+document.addEventListener('DOMContentLoaded', () => {
+  // تحسين عرض النصوص العربية
+  const arabicElements = document.querySelectorAll('h1, h2, h3, p, span, .nav-link, .btn, .tag');
+  arabicElements.forEach(el => {
+    if (el.textContent.match(/[\u0600-\u06FF]/)) {
+      el.classList.add('arabic-text');
+    }
+  });
+
+  // تحسين تجربة التمرير
+  document.documentElement.style.scrollBehavior = 'smooth';
+  
+  // إضافة تأثير تدرج ناعم عند التحميل
+  document.body.style.opacity = '0';
+  setTimeout(() => {
+    document.body.style.transition = 'opacity 0.5s ease';
+    document.body.style.opacity = '1';
+  }, 100);
 });
