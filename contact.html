@@ -7,7 +7,7 @@
   <title>تواصل معنا | Sora Studio - صورة استوديو</title>
 
   <!-- Meta SEO -->
-  <meta name="description" content="تواصل مع Sora Studio لمناقشة مشاريع التصوير، التصميم، وإنتاج الفيديو. نحن هنا للإجابة على أسئلتك واستفساراتك.">
+  <meta name="description" content="تواصل مع Sora Studio في الرياض لمناقشة مشاريع التصوير، التصميم، وإنتاج الفيديو.">
   <meta name="keywords" content="تواصل, Sora Studio, صورة استوديو, استوديو تصوير, تصميم, فيديو, الرياض">
   <meta name="author" content="Sora Studio">
 
@@ -24,9 +24,8 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* أنماط خاصة بصفحة التواصل */
     .contact-hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #171e93;
       color: white;
       padding: 140px 0 80px;
       text-align: center;
@@ -37,12 +36,10 @@
     .contact-hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,1000 1000,0 1000,1000"/></svg>');
       background-size: cover;
+      opacity: 0.8;
     }
 
     .contact-hero-content {
@@ -54,17 +51,12 @@
       font-size: 3.5rem;
       margin-bottom: 16px;
       animation: fadeInDown 1s ease;
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .contact-hero p {
       font-size: 1.25rem;
       opacity: 0.9;
       animation: fadeInUp 1s ease 0.2s both;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .contact-info {
@@ -86,17 +78,12 @@
       font-size: 2rem;
       margin-bottom: 24px;
       color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .contact-details p {
       color: var(--gray-600);
       line-height: 1.7;
       margin-bottom: 32px;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .contact-item {
@@ -122,15 +109,12 @@
       font-size: 1.1rem;
       margin-bottom: 4px;
       color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
       font-weight: 700;
     }
 
     .contact-text p {
       color: var(--gray-600);
       margin: 0;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .contact-form-container {
@@ -140,17 +124,13 @@
       box-shadow: var(--shadow-lg);
     }
 
-    .form-group {
-      margin-bottom: 24px;
-    }
+    .form-group { margin-bottom: 24px; }
 
     .form-group label {
       display: block;
       margin-bottom: 8px;
       color: var(--gray-700);
       font-weight: 500;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .form-group input,
@@ -162,8 +142,6 @@
       border-radius: var(--radius-sm);
       font-size: 1rem;
       transition: var(--transition);
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .form-group input:focus,
@@ -171,7 +149,7 @@
     .form-group select:focus {
       outline: none;
       border-color: var(--cyan);
-      box-shadow: 0 0 0 3px rgb(0 201 200 / 10%);
+      box-shadow: 0 0 0 3px rgb(23 30 147 / 12%);
     }
 
     .form-group textarea {
@@ -190,20 +168,14 @@
       font-weight: 600;
       cursor: pointer;
       transition: var(--transition);
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
     }
 
-    .submit-btn svg {
-      flex-shrink: 0;
-    }
-
     .submit-btn:hover {
-      background: #00b3b2;
+      background: #0f1461;
       transform: translateY(-2px);
     }
 
@@ -217,27 +189,22 @@
       font-size: 2rem;
       margin-bottom: 24px;
       color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .map-section p {
       text-align: center;
       color: var(--gray-600);
       margin-bottom: 32px;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .map-container {
       height: 400px;
-      background: linear-gradient(135deg, var(--gray-200), var(--gray-300));
+      background: #171e93;
       border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gray-600);
+      color: var(--white);
       font-size: 1.1rem;
       position: relative;
       overflow: hidden;
@@ -246,12 +213,9 @@
     .map-container::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%239ca3af"/><circle cx="50" cy="40" r="2" fill="%239ca3af"/><circle cx="80" cy="30" r="2" fill="%239ca3af"/><circle cx="30" cy="70" r="2" fill="%239ca3af"/><circle cx="70" cy="80" r="2" fill="%239ca3af"/></svg>');
-      opacity: 0.3;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff"/><circle cx="50" cy="40" r="2" fill="%23ffffff"/><circle cx="80" cy="30" r="2" fill="%23ffffff"/><circle cx="30" cy="70" r="2" fill="%23ffffff"/><circle cx="70" cy="80" r="2" fill="%23ffffff"/></svg>');
+      opacity: 0.25;
     }
 
     .working-hours {
@@ -263,16 +227,11 @@
       font-size: 2.5rem;
       margin-bottom: 16px;
       color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .working-hours p {
       color: var(--gray-600);
       margin-bottom: 48px;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .hours-grid {
@@ -300,18 +259,10 @@
       font-weight: 600;
       color: var(--gray-900);
       margin-bottom: 8px;
-      font-family: 'GE SS Two', sans-serif;
     }
 
-    .day-hours {
-      color: var(--gray-600);
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
-    }
-
-    .day-hours.closed {
-      color: var(--gray-400);
-    }
+    .day-hours { color: var(--gray-600); }
+    .day-hours.closed { color: var(--gray-400); }
 
     .faq-section {
       padding: 80px 0;
@@ -323,9 +274,6 @@
       font-size: 2.5rem;
       margin-bottom: 48px;
       color: var(--gray-900);
-      font-family: 'GE SS Two', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .faq-container {
@@ -350,8 +298,6 @@
       font-weight: 600;
       color: var(--gray-900);
       transition: var(--transition);
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .faq-question:hover {
@@ -365,8 +311,6 @@
       transition: max-height 0.3s ease, padding 0.3s ease;
       color: var(--gray-600);
       line-height: 1.6;
-      font-family: 'GE SS Two', sans-serif;
-      letter-spacing: 0.5px;
     }
 
     .faq-answer.active {
@@ -384,40 +328,19 @@
     }
 
     @media (max-width: 768px) {
-      .contact-hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .contact-info-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .hours-grid {
-        grid-template-columns: 1fr;
-      }
+      .contact-hero h1 { font-size: 2.5rem; }
+      .contact-info-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hours-grid { grid-template-columns: 1fr; }
     }
 
     @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -496,7 +419,7 @@
           </div>
           
           <div class="contact-form-container scroll-fade-in">
-            <form id="contactForm">
+            <form id="contactForm" novalidate>
               <div class="form-group">
                 <label for="name">الاسم الكامل *</label>
                 <input type="text" id="name" name="name" required>
@@ -620,7 +543,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              <p>تختلف الأسعار حسب نوع الخدمة ومدة المشروع. نحن نقدم عروض أسعار مخصصة لكل مشروع بعد فهم متطلباتك.</p>
+              <p>تختلف الأسعار حسب نوع الخدمة ومدة المشروع. نقدم عروض أسعار مخصصة بعد فهم متطلباتك بالكامل.</p>
             </div>
           </div>
           <div class="faq-item scroll-fade-in">
@@ -629,7 +552,7 @@
               <span class="faq-icon">+</span>
             </div>
             <div class="faq-answer">
-              <p>نعم، نعمل مع العملاء في جميع أنحاء المملكة وخارجها. يمكننا التواصل والعمل عن بُعد بكفاءة عالية.</p>
+              <p>نعم، نعمل مع العملاء في جميع أنحاء المملكة وخارجها، ويمكننا تنفيذ المشاريع عن بُعد بكفاءة عالية.</p>
             </div>
           </div>
         </div>
@@ -673,11 +596,11 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Scripts -->
   <script src="js/main.js" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // FAQ التفاعلي
+      // FAQ toggle
       const faqQuestions = document.querySelectorAll('.faq-question');
       faqQuestions.forEach((question) => {
         question.addEventListener('click', () => {
@@ -685,7 +608,6 @@
           const answer = question.nextElementSibling;
           const icon = question.querySelector('.faq-icon');
 
-          // إغلاق باقي الأسئلة
           document.querySelectorAll('.faq-item').forEach((item) => {
             if (item !== faqItem) {
               item.classList.remove('active');
@@ -696,14 +618,13 @@
             }
           });
 
-          // تبديل حالة السؤال الحالي
           faqItem.classList.toggle('active');
           answer.classList.toggle('active');
           icon.textContent = faqItem.classList.contains('active') ? '×' : '+';
         });
       });
 
-      // معالجة إرسال النموذج (فرونت اند فقط)
+      // Contact form (front-end only)
       const contactForm = document.getElementById('contactForm');
       if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
