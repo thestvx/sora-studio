@@ -2,56 +2,417 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>عنّا | Sora Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عنّا | Sora Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* أنماط خاصة بصفحة عنّا */
+    .about-hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 120px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,1000 1000,0 1000,1000"/></svg>');
+      background-size: cover;
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .about-hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .story-section {
+      padding: 80px 0;
+    }
+
+    .story-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .story-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+      color: var(--gray-900);
+    }
+
+    .story-content p {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 80px 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 50%;
+      width: 2px;
+      background: var(--gray-200);
+      transform: translateX(50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 48px;
+      width: 50%;
+      padding: 0 40px;
+    }
+
+    .timeline-item:nth-child(odd) {
+      right: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 0;
+      text-align: left;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      text-align: left;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 0;
+      right: -12px;
+      width: 24px;
+      height: 24px;
+      background: var(--cyan);
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 0 4px var(--gray-100);
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      right: auto;
+      left: -12px;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-year {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-title {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--gray-900);
+    }
+
+    .timeline-description {
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 80px 0;
+    }
+
+    .mission-card, .vision-card {
+      padding: 48px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .mission-card {
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-light));
+      color: white;
+    }
+
+    .vision-card {
+      background: var(--gray-900);
+      color: white;
+    }
+
+    .mission-card h3, .vision-card h3 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .mission-card p, .vision-card p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    .clients-section {
+      padding: 80px 0;
+      background: var(--gray-50);
+      text-align: center;
+    }
+
+    .clients-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: var(--gray-900);
+    }
+
+    .clients-section p {
+      color: var(--gray-600);
+      margin-bottom: 48px;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .client-logo {
+      background: white;
+      padding: 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      font-weight: 600;
+      color: var(--gray-600);
+      transition: var(--transition);
+    }
+
+    .client-logo:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .about-hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .timeline::before {
+        right: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-right: 60px;
+        padding-left: 20px;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: auto;
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content {
+        text-align: right;
+      }
+
+      .timeline-dot {
+        right: 8px !important;
+        left: auto !important;
+      }
+
+      .mission-vision {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-  <nav id="navbar">
-    <div class="container nav-inner">
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-container">
       <a href="index.html" class="logo">Sora Studio</a>
       <ul class="nav-links">
-        <li><a href="index.html#portfolio">أعمالنا</a></li>
-        <li><a href="team.html">الفريق</a></li>
-        <li><a href="about.html">عنّا</a></li>
-        <li><a href="index.html#contact">تواصل</a></li>
+        <li><a href="index.html#portfolio" class="nav-link">أعمالنا</a></li>
+        <li><a href="team.html" class="nav-link">الفريق</a></li>
+        <li><a href="about.html" class="nav-link">عنّا</a></li>
+        <li><a href="index.html#contact" class="nav-link">تواصل</a></li>
       </ul>
     </div>
   </nav>
 
-  <section class="section">
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <h1>عنّا</h1>
+      <p>نصنع القصص التي تُرى وتُتذكر</p>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story-section">
     <div class="container">
-      <h2>من نحن؟</h2>
-      <p>
-        نحن استوديو إبداعي متخصص في التصوير، التصميم، وإنتاج الفيديو. نؤمن أن كل فكرة تستحق أن تُروى بصريًا بأسلوب مبتكر
-        واحترافي. منذ انطلاقنا عام ٢٠١٩، أنتجنا أكثر من ١٢٠ مشروعًا لأكثر من ٤٠ علامة تجارية في المنطقة.
-      </p>
-      <div class="stats">
-        <div class="stat">
-          <h3>120+</h3>
-          <p>مشروع منفذ</p>
+      <div class="story-content">
+        <h2>قصتنا</h2>
+        <p>تأسست Sora Studio في عام ٢٠١٩ من شغفنا بالبصريات والإبداع. بدأنا كفريق صغير من المصممين والمصورين الذين يشاركون نفس الرؤية: تحويل الأفكار إلى تجارب بصرية استثنائية.</p>
+        <p>اليوم، نحن فريق متكامل من المحترفين المتخصصين في التصوير، التصميم، وإنتاج الفيديو، نخدم أكثر من ٤٠ علامة تجارية في المنطقة، ونفخر بأننا ساهمنا في نجاح قصصهم البصرية.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline">
+    <div class="container">
+      <div class="timeline-item scroll-fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">٢٠١٩</div>
+          <h3 class="timeline-title">التأسيس</h3>
+          <p class="timeline-description">انطلقت Sora Studio كفريق صغير من الشغوفين بالإبداع البصري.</p>
         </div>
-        <div class="stat">
-          <h3>40+</h3>
-          <p>عميل</p>
+      </div>
+      <div class="timeline-item scroll-fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">٢٠٢٠</div>
+          <h3 class="timeline-title">أولى الشراكات</h3>
+          <p class="timeline-description">بدأنا العمل مع أولى العلامات التجارية الكبرى وحققنا نجاحات ملحوظة.</p>
         </div>
-        <div class="stat">
-          <h3>6</h3>
-          <p>سنوات خبرة</p>
+      </div>
+      <div class="timeline-item scroll-fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">٢٠٢١</div>
+          <h3 class="timeline-title">التوسع</h3>
+          <p class="timeline-description">وسعنا فريقنا وخدماتنا لتشمل إنتاج الفيديو والموشن جرافيك.</p>
+        </div>
+      </div>
+      <div class="timeline-item scroll-fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">٢٠٢٣</div>
+          <h3 class="timeline-title">الاعتراف الإقليمي</h3>
+          <p class="timeline-description">أصبحنا من الاستوديوهات المرموقة في المنطقة، نخدم علامات تجارية عالمية.</p>
+        </div>
+      </div>
+      <div class="timeline-item scroll-fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">٢٠٢٥</div>
+          <h3 class="timeline-title">الاستمرار في النمو</h3>
+          <p class="timeline-description">نستمر في التطور والابتكار، نبحث دائماً عن حلول إبداعية جديدة.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
+  <!-- Mission & Vision -->
+  <section class="mission-vision">
     <div class="container">
-      <h3>Sora Studio</h3>
-      <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
-      <div class="social">
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
-        <a href="#">LinkedIn</a>
+      <div class="mission-card scroll-fade-in">
+        <h3>مهمتنا</h3>
+        <p>تمكين العلامات التجارية من رواية قصصها بصرياً بأسلوب مبتكر واحترافي، نخلق من خلالها تجارب تُحفز وتُلهم وتُحدث أثراً حقيقياً.</p>
+      </div>
+      <div class="vision-card scroll-fade-in">
+        <h3>رؤيتنا</h3>
+        <p>أن نكون الاستوديو الإبداعي الأكثر تأثيراً في المنطقة، نرسخ معايير جديدة في صناعة المحتوى البصري ونكون شريكاً موثوقاً لكل علامة تجارية طموحة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section -->
+  <section class="clients-section">
+    <div class="container">
+      <h2>عملاؤنا</h2>
+      <p>نفتخر بالعمل مع علامات تجارية مميزة ساهمنا في نجاح قصصها البصرية</p>
+      <div class="clients-grid">
+        <div class="client-logo scroll-fade-in">شركة تقنية</div>
+        <div class="client-logo scroll-fade-in">علامة أزياء</div>
+        <div class="client-logo scroll-fade-in">مطعم فاخر</div>
+        <div class="client-logo scroll-fade-in">شركة استشارات</div>
+        <div class="client-logo scroll-fade-in">متجر إلكتروني</div>
+        <div class="client-logo scroll-fade-in">صالة رياضية</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <h3 class="footer-logo">Sora Studio</h3>
+      <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
+      <div class="social-links">
+        <a href="#" class="social-link">إنستغرام</a>
+        <a href="#" class="social-link">بهانس</a>
+        <a href="#" class="social-link">لينكدإن</a>
+      </div>
+      <div class="footer-bottom">
+        <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
       </div>
     </div>
   </footer>
