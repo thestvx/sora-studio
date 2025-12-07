@@ -7,17 +7,17 @@
   <title>فريق العمل | Sora Studio - صورة استوديو</title>
 
   <!-- Meta SEO -->
-  <meta name="description" content="تعرّف على فريق Sora Studio في الرياض: المصورين، المصممين، ومنتجي الفيديو الذين يقفون خلف أعمالنا.">
+  <meta name="description" content="تعرّف على فريق Sora Studio الإبداعي في الرياض، المصورين، المصممين، ومنتجي الفيديو الذين يقفون خلف أعمالنا البصرية.">
   <meta name="keywords" content="الفريق, فريق العمل, Sora Studio, صورة استوديو, مصورين, مصممين, فيديو, الرياض">
   <meta name="author" content="Sora Studio">
 
   <!-- Open Graph -->
   <meta property="og:title" content="فريق العمل | Sora Studio - صورة استوديو">
-  <meta property="og:description" content="فريق من المحترفين المتحمسين لخلق تجارب بصرية استثنائية.">
+  <meta property="og:description" content="نحن فريق من المحترفين المتحمسين لخلق تجارب بصرية استثنائية.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_SA">
 
-  <!-- GE SS Two Font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=GE+SS+Two:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
@@ -25,7 +25,7 @@
 
   <style>
     .page-header {
-      background: #171e93;
+      background: var(--primary);
       color: white;
       padding: 140px 0 80px;
       text-align: center;
@@ -39,7 +39,6 @@
       inset: 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,1000 1000,0 1000,1000"/></svg>');
       background-size: cover;
-      opacity: 0.8;
     }
 
     .page-header-content {
@@ -51,6 +50,7 @@
       font-size: 3.5rem;
       margin-bottom: 16px;
       animation: fadeInDown 1s ease;
+      font-weight: 700;
     }
 
     .page-header p {
@@ -69,7 +69,8 @@
     .team-introduction h2 {
       font-size: 2.5rem;
       margin-bottom: 24px;
-      color: var(--gray-900);
+      color: var(--primary);
+      font-weight: 700;
     }
 
     .team-introduction p {
@@ -110,7 +111,7 @@
       width: 80px;
       height: 80px;
       margin: 0 auto 24px;
-      background: linear-gradient(135deg, #171e93, #0f1461);
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -123,6 +124,7 @@
       font-size: 1.5rem;
       margin-bottom: 16px;
       color: var(--gray-900);
+      font-weight: 700;
     }
 
     .value-description {
@@ -156,7 +158,7 @@
     .member-image {
       width: 100%;
       height: 300px;
-      background: linear-gradient(135deg, #171e93, #0f1461);
+      background: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -191,10 +193,11 @@
       font-size: 1.75rem;
       margin-bottom: 8px;
       color: var(--gray-900);
+      font-weight: 700;
     }
 
     .member-role {
-      color: var(--cyan);
+      color: var(--primary);
       font-weight: 600;
       margin-bottom: 16px;
       font-size: 1.1rem;
@@ -224,7 +227,7 @@
     .join-team {
       text-align: center;
       padding: 80px 0;
-      background: linear-gradient(135deg, #111827, #171e93);
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
       color: white;
       margin-top: 40px;
     }
@@ -232,6 +235,7 @@
     .join-team h2 {
       font-size: 2.5rem;
       margin-bottom: 16px;
+      font-weight: 700;
     }
 
     .join-team p {
@@ -241,8 +245,8 @@
     }
 
     .btn-join {
-      background: var(--cyan);
-      color: white;
+      background: white;
+      color: var(--primary);
       padding: 16px 40px;
       border-radius: 50px;
       text-decoration: none;
@@ -254,7 +258,7 @@
     }
 
     .btn-join:hover {
-      background: #0f1461;
+      background: #e5e7ff;
       transform: translateY(-2px);
     }
 
@@ -270,8 +274,13 @@
 
     @media (max-width: 768px) {
       .page-header h1 { font-size: 2.5rem; }
-      .team-grid-detailed { grid-template-columns: 1fr; gap: 32px; }
-      .team-values-inner { grid-template-columns: 1fr; }
+      .team-grid-detailed {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .team-values-inner {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -300,7 +309,7 @@
   </nav>
 
   <main>
-    <!-- Page Header -->
+    <!-- Header -->
     <section class="page-header">
       <div class="page-header-content">
         <h1>فريق العمل</h1>
@@ -308,7 +317,7 @@
       </div>
     </section>
 
-    <!-- Team Introduction -->
+    <!-- Intro -->
     <section class="team-introduction">
       <div class="container">
         <div class="scroll-fade-in">
@@ -318,7 +327,7 @@
       </div>
     </section>
 
-    <!-- Team Values -->
+    <!-- Values -->
     <section class="team-values-wrapper">
       <div class="team-values">
         <div class="container">
@@ -326,7 +335,7 @@
             <div class="value-card scroll-fade-in">
               <div class="value-icon" aria-hidden="true">🎨</div>
               <h3 class="value-title">الإبداع</h3>
-              <p class="value-description">نبحث دائماً عن حلول مبتكرة، وندفع حدود ما هو ممكن في التصميم والتصوير والإخراج البصري.</p>
+              <p class="value-description">نبحث دائماً عن حلول مبتكرة، وندفع حدود ما هو ممكن في التصميم، التصوير، والإخراج البصري.</p>
             </div>
             <div class="value-card scroll-fade-in">
               <div class="value-icon" aria-hidden="true">🤝</div>
@@ -343,14 +352,14 @@
       </div>
     </section>
 
-    <!-- Detailed Team Grid -->
+    <!-- Team Grid -->
     <section class="team-detailed">
       <div class="container">
         <div class="team-grid-detailed" id="teamGridDetailed"></div>
       </div>
     </section>
 
-    <!-- Join Team Section -->
+    <!-- Join Team -->
     <section class="join-team">
       <div class="container">
         <h2>هل ترغب بالانضمام لفريقنا؟</h2>
@@ -401,7 +410,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="js/main.js" defer></script>
   <script>
     const teamDetailed = [
