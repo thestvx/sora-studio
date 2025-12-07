@@ -1,119 +1,144 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sora Studio | صورة استوديو</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sora Studio | صورة استوديو</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Loader -->
-  <div class="loader" id="loader">
-    <div class="loader-circle"></div>
-  </div>
-
-  <!-- Navigation -->
-  <nav class="nav" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo">Sora Studio</a>
-      <ul class="nav-links">
-        <li><a href="#portfolio" class="nav-link">أعمالنا</a></li>
-        <li><a href="#team" class="nav-link">الفريق</a></li>
-        <li><a href="#about" class="nav-link">عنّا</a></li>
-        <li><a href="#contact" class="nav-link">تواصل</a></li>
-      </ul>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-circle"></div>
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">نصنع القصص التي تُرى</h1>
-      <p class="hero-subtitle">استوديو إبداعي متخصص في التصوير، التصميم وإنتاج الفيديو</p>
-      <div class="hero-buttons">
-        <a href="#portfolio" class="btn btn-primary">استكشف أعمالنا</a>
-        <a href="#contact" class="btn btn-secondary">تواصل معنا</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">أعمالنا</h2>
-        <p class="section-subtitle">نصنع القصص التي تُرى وتُتذكر</p>
-      </div>
-
-      <div class="portfolio-filter">
-        <button class="filter-btn active" data-filter="all">الكل</button>
-        <button class="filter-btn" data-filter="photo">تصوير</button>
-        <button class="filter-btn" data-filter="video">فيديو</button>
-        <button class="filter-btn" data-filter="brand">تصميم</button>
-      </div>
-
-      <div class="portfolio-grid" id="portfolioGrid"></div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section id="team" class="section bg-gray">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">فريق العمل</h2>
-        <p class="section-subtitle">نحن فريق من المحترفين المتحمسين</p>
-      </div>
-      <div class="team-grid" id="teamGrid"></div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">عنّا</h2>
-        <p class="section-subtitle">نحن استوديو إبداعي متخصص في التصوير، التصميم، وإنتاج الفيديو</p>
-      </div>
-      <div class="stats">
-        <div class="stat">
-          <h3>120+</h3>
-          <p>مشروع منفذ</p>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Sora Studio</a>
+            <ul class="nav-links">
+                <li><a href="#portfolio" class="nav-link">أعمالنا</a></li>
+                <li><a href="team.html" class="nav-link">الفريق</a></li>
+                <li><a href="about.html" class="nav-link">عنّا</a></li>
+                <li><a href="#contact" class="nav-link">تواصل</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <div class="stat">
-          <h3>40+</h3>
-          <p>عميل</p>
-        </div>
-        <div class="stat">
-          <h3>6</h3>
-          <p>سنوات خبرة</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <h3 class="footer-logo">Sora Studio</h3>
-      <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
-      <div class="social-links">
-        <a href="#" class="social-link">إنستغرام</a>
-        <a href="#" class="social-link">بهانس</a>
-        <a href="#" class="social-link">لينكدإن</a>
-      </div>
-      <div class="footer-bottom">
-        <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
-      </div>
-    </div>
-  </footer>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">نصنع القصص التي تُرى</h1>
+            <p class="hero-subtitle">استوديو إبداعي متخصص في التصوير، التصميم وإنتاج الفيديو</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">
+                    <span>استكشف أعمالنا</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-secondary">تواصل معنا</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- JavaScript -->
-  <script src="js/main.js"></script>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <div class="section-header scroll-fade-in">
+                <h2 class="section-title">أعمالنا</h2>
+                <p class="section-subtitle">نصنع القصص التي تُرى وتُتذكر</p>
+            </div>
+
+            <div class="portfolio-filter scroll-fade-in">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="photo">تصوير</button>
+                <button class="filter-btn" data-filter="video">فيديو</button>
+                <button class="filter-btn" data-filter="brand">تصميم</button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid"></div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section bg-gray">
+        <div class="container">
+            <div class="section-header scroll-fade-in">
+                <h2 class="section-title">فريق العمل</h2>
+                <p class="section-subtitle">نحن فريق من المحترفين المتحمسين</p>
+            </div>
+            <div class="team-grid" id="teamGrid"></div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content scroll-fade-in">
+                <h2>هل لديك مشروع في ذهنك؟</h2>
+                <p>نحن هنا لتحويل أفكارك إلى واقع بصري مذهل. تواصل معنا لمناقشة مشروعك القادم.</p>
+                <a href="contact.html" class="btn btn-primary">
+                    <span>ابدأ مشروعك</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-logo">Sora Studio</h3>
+                <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Behance">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+                <div class="footer-bottom">
+                    <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
