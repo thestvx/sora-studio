@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مشروع تصوير المنتجات | Sora Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* أنماط خاصة بصفحة المشروع المنفرد */
+    .project-hero {
+      height: 70vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,1000 1000,0 1000,1000"/></svg>');
+      background-size: cover;
+    }
+
+    .project-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .project-hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    .project-details {
+      padding: 80px 0;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
+      padding: 32px;
+      background: var(--gray-50);
+      border-radius: var(--radius);
+    }
+
+    .meta-item {
+      text-align: center;
+    }
+
+    .meta-label {
+      color: var(--gray-600);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      color: var(--gray-900);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .project-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-section {
+      margin-bottom: 48px;
+    }
+
+    .project-section h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: var(--gray-900);
+    }
+
+    .project-section p {
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .gallery-item {
+      height: 300px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-item span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tools-used {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .tool-tag {
+      padding: 8px 16px;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .project-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--gray-200);
+      margin-top: 48px;
+    }
+
+    .nav-project {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .nav-project:hover {
+      color: var(--cyan);
+    }
+
+    .nav-project.prev {
+      flex-direction: row-reverse;
+    }
+
+    .nav-project-info span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--gray-500);
+    }
+
+    .nav-project-info strong {
+      color: var(--gray-900);
+      font-weight: 600;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--gray-900), var(--gray-800));
+      color: white;
+      margin-top: 80px;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+
+    .btn-cta {
+      background: var(--cyan);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .btn-cta:hover {
+      background: #00b3b2;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .project-hero h1 {
+        font-size: 2rem;
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .project-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .project-navigation {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .mission-vision {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Sora Studio</a>
+      <ul class="nav-links">
+        <li><a href="index.html#portfolio" class="nav-link">أعمالنا</a></li>
+        <li><a href="team.html" class="nav-link">الفريق</a></li>
+        <li><a href="about.html" class="nav-link">عنّا</a></li>
+        <li><a href="contact.html" class="nav-link">تواصل</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Project Hero -->
+  <section class="project-hero">
+    <div class="project-hero-content">
+      <h1>حملة تصوير منتجات فاخرة</h1>
+      <p>تصوير احترافي لمنتجات علامة تجارية فاخرة بأسلوب minimal وحديث</p>
+    </div>
+  </section>
+
+  <!-- Project Details -->
+  <section class="project-details">
+    <div class="container">
+      <div class="project-meta">
+        <div class="meta-item">
+          <div class="meta-label">العميل</div>
+          <div class="meta-value">علامة تجارية فاخرة</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">الفئة</div>
+          <div class="meta-value">تصوير منتجات</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">المدة</div>
+          <div class="meta-value">٣ أسابيع</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">السنة</div>
+          <div class="meta-value">٢٠٢٤</div>
+        </div>
+      </div>
+
+      <div class="project-content">
+        <div class="project-section">
+          <h2>نبذة عن المشروع</h2>
+          <p>تم إعداد هذه الحملة لإطلاق مجموعة منتجات جديدة لعلامة تجارية فاخرة، حيث كان الهدف الرئيسي هو إبراز جودة المنتجات وروعة التصميم من خلال تصوير احترافي يعكس هوية العلامة التجارية.</p>
+          <p>اعتمدنا على أسلوب minimal حديث مع إضاءة طبيعية ناعمة لإبراز تفاصيل المنتجات وجودتها العالية، مع الحفاظ على طابع فخم وأنيق يناسب العلامة التجارية.</p>
+        </div>
+
+        <div class="project-section">
+          <h2>النتائج</h2>
+          <p>حققت الحملة نجاحاً كبيراً، حيث تم استخدام الصور في جميع قنوات التواصل الاجتماعي للعلامة التجارية، بالإضافة إلى الموقع الإلكتروني والمواد التسويقية. شهدت العلامة التجارية زيادة بنسبة ٤٥٪ في التفاعل على وسائل التواصل الاجتماعي بعد إطلاق الحملة.</p>
+        </div>
+
+        <div class="project-gallery">
+          <div class="gallery-item scroll-fade-in">
+            <span>صورة المنتج ١</span>
+          </div>
+          <div class="gallery-item scroll-fade-in">
+            <span>صورة المنتج ٢</span>
+          </div>
+          <div class="gallery-item scroll-fade-in">
+            <span>صورة المنتج ٣</span>
+          </div>
+          <div class="gallery-item scroll-fade-in">
+            <span>صورة المنتج ٤</span>
+          </div>
+          <div class="gallery-item scroll-fade-in">
+            <span>صورة المنتج ٥</span>
+          </div>
+          <div class="gallery-item scroll-fade-in">
+            <span>صورة المنتج ٦</span>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h2>الأدوات المستخدمة</h2>
+          <div class="tools-used">
+            <span class="tool-tag">Canon EOS R5</span>
+            <span class="tool-tag">100mm Macro Lens</span>
+            <span class="tool-tag">Adobe Lightroom</span>
+            <span class="tool-tag">Adobe Photoshop</span>
+            <span class="tool-tag">Capture One</span>
+            <span class="tool-tag">Profoto Lighting</span>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h2>التحدي والحل</h2>
+          <p>كان التحدي الأكبر هو إبراز تفاصيل المنتجات الفاخرة دون المبالغة في الإضاءة أو التأثيرات. تمكنا من حل هذا من خلال استخدام إضاءة طبيعية ناعمة مع خلفيات بسيطة تبرز جمال المنتجات.</p>
+        </div>
+      </div>
+
+      <!-- Project Navigation -->
+      <div class="project-navigation">
+        <a href="#" class="nav-project prev">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <div class="nav-project-info">
+            <span>المشروع السابق</span>
+            <strong>فيديو ترويجي</strong>
+          </div>
+        </a>
+        <a href="#" class="nav-project next">
+          <div class="nav-project-info">
+            <span>المشروع التالي</span>
+            <strong>تصميم هوية</strong>
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>هل لديك مشروع مشابه؟</h2>
+      <p>نحن مستعدون لتحويل أفكارك إلى واقع بصري مذهل. تواصل معنا لمناقشة مشروعك القادم.</p>
+      <a href="contact.html" class="btn-cta">
+        <span>ابدأ مشروعك</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <h3 class="footer-logo">Sora Studio</h3>
+      <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
+      <div class="social-links">
+        <a href="#" class="social-link">إنستغرام</a>
+        <a href="#" class="social-link">بهانس</a>
+        <a href="#" class="social-link">لينكدإن</a>
+      </div>
+      <div class="footer-bottom">
+        <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
