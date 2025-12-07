@@ -3,19 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عنّا | Sora Studio</title>
+
+  <title>عنّا | Sora Studio - صورة استوديو</title>
+
+  <!-- Meta SEO -->
+  <meta name="description" content="تعرف على قصة Sora Studio، مهمتنا ورؤيتنا وشركائنا. استوديو إبداعي في الرياض متخصص في التصوير، التصميم وإنتاج الفيديو.">
+  <meta name="keywords" content="عنّا, Sora Studio, صورة استوديو, استوديو تصوير, تصميم, فيديو, الرياض">
+  <meta name="author" content="Sora Studio">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="عنّا | Sora Studio - صورة استوديو">
+  <meta property="og:description" content="نصنع القصص التي تُرى وتُتذكر. تعرّف على قصة Sora Studio ومهمتنا ورؤيتنا.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_SA">
 
   <!-- GE SS Two Font -->
   <link href="https://fonts.googleapis.com/css2?family=GE+SS+Two:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+
   <style>
     /* أنماط خاصة بصفحة عنّا */
     .about-hero {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 120px 0 80px;
+      padding: 140px 0 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -165,6 +178,10 @@
       line-height: 1.6;
       font-family: 'GE SS Two', sans-serif;
       letter-spacing: 0.5px;
+    }
+
+    .mission-vision-wrapper {
+      background: var(--gray-50);
     }
 
     .mission-vision {
@@ -320,21 +337,21 @@
 </head>
 <body>
   <!-- Loader -->
-  <div class="loader" id="loader">
+  <div class="loader" id="loader" aria-hidden="true">
     <div class="loader-circle"></div>
   </div>
 
   <!-- Navigation -->
   <nav class="nav" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">Sora Studio</a>
+      <a href="index.html" class="logo" aria-label="Sora Studio - صورة استوديو">Sora Studio</a>
       <ul class="nav-links">
         <li><a href="index.html#portfolio" class="nav-link">أعمالنا</a></li>
-        <li><a href="team.html" class="nav-link">الفريق</a></li>
-        <li><a href="about.html" class="nav-link">عنّا</a></li>
+        <li><a href="index.html#team" class="nav-link">الفريق</a></li>
+        <li><a href="about.html" class="nav-link" aria-current="page">عنّا</a></li>
         <li><a href="index.html#contact" class="nav-link">تواصل</a></li>
       </ul>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح وإغلاق قائمة الجوال">
         <span></span>
         <span></span>
         <span></span>
@@ -342,117 +359,141 @@
     </div>
   </nav>
 
-  <!-- About Hero -->
-  <section class="about-hero">
-    <div class="about-hero-content">
-      <h1>عنّا</h1>
-      <p>نصنع القصص التي تُرى وتُتذكر</p>
-    </div>
-  </section>
+  <main>
+    <!-- About Hero -->
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <h1>عنّا</h1>
+        <p>نصنع القصص التي تُرى وتُتذكر</p>
+      </div>
+    </section>
 
-  <!-- Story Section -->
-  <section class="story-section">
-    <div class="container">
-      <div class="story-content">
-        <h2>قصتنا</h2>
-        <p>تأسست Sora Studio في عام ٢٠١٩ من شغفنا بالبصريات والإبداع. بدأنا كفريق صغير من المصممين والمصورين الذين يشاركون نفس الرؤية: تحويل الأفكار إلى تجارب بصرية استثنائية.</p>
-        <p>اليوم، نحن فريق متكامل من المحترفين المتخصصين في التصوير، التصميم، وإنتاج الفيديو، نخدم أكثر من ٤٠ علامة تجارية في المنطقة، ونفخر بأننا ساهمنا في نجاح قصصهم البصرية.</p>
+    <!-- Story Section -->
+    <section class="story-section">
+      <div class="container">
+        <div class="story-content scroll-fade-in">
+          <h2>قصتنا</h2>
+          <p>تأسست Sora Studio في عام ٢٠١٩ من شغفنا بالبصريات والإبداع. بدأنا كفريق صغير من المصممين والمصورين الذين يشاركون نفس الرؤية: تحويل الأفكار إلى تجارب بصرية استثنائية.</p>
+          <p>اليوم، نحن فريق متكامل من المحترفين المتخصصين في التصوير، التصميم، وإنتاج الفيديو، نخدم أكثر من ٤٠ علامة تجارية في المنطقة، ونفخر بأننا ساهمنا في نجاح قصصهم البصرية.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Timeline -->
-  <section class="timeline">
-    <div class="container">
-      <div class="timeline-item scroll-fade-in">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-year">٢٠١٩</div>
-          <h3 class="timeline-title">التأسيس</h3>
-          <p class="timeline-description">انطلقت Sora Studio كفريق صغير من الشغوفين بالإبداع البصري.</p>
+    <!-- Timeline -->
+    <section class="timeline">
+      <div class="container">
+        <div class="timeline-item scroll-fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">٢٠١٩</div>
+            <h3 class="timeline-title">التأسيس</h3>
+            <p class="timeline-description">انطلقت Sora Studio كفريق صغير من الشغوفين بالإبداع البصري.</p>
+          </div>
+        </div>
+        <div class="timeline-item scroll-fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">٢٠٢٠</div>
+            <h3 class="timeline-title">أولى الشراكات</h3>
+            <p class="timeline-description">بدأنا العمل مع أولى العلامات التجارية الكبرى وحققنا نجاحات ملحوظة.</p>
+          </div>
+        </div>
+        <div class="timeline-item scroll-fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">٢٠٢١</div>
+            <h3 class="timeline-title">التوسع</h3>
+            <p class="timeline-description">وسعنا فريقنا وخدماتنا لتشمل إنتاج الفيديو والموشن جرافيك.</p>
+          </div>
+        </div>
+        <div class="timeline-item scroll-fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">٢٠٢٣</div>
+            <h3 class="timeline-title">الاعتراف الإقليمي</h3>
+            <p class="timeline-description">أصبحنا من الاستوديوهات المرموقة في المنطقة، نخدم علامات تجارية عالمية.</p>
+          </div>
+        </div>
+        <div class="timeline-item scroll-fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-year">٢٠٢٥</div>
+            <h3 class="timeline-title">الاستمرار في النمو</h3>
+            <p class="timeline-description">نستمر في التطور والابتكار، نبحث دائماً عن حلول إبداعية جديدة.</p>
+          </div>
         </div>
       </div>
-      <div class="timeline-item scroll-fade-in">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-year">٢٠٢٠</div>
-          <h3 class="timeline-title">أولى الشراكات</h3>
-          <p class="timeline-description">بدأنا العمل مع أولى العلامات التجارية الكبرى وحققنا نجاحات ملحوظة.</p>
-        </div>
-      </div>
-      <div class="timeline-item scroll-fade-in">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-year">٢٠٢١</div>
-          <h3 class="timeline-title">التوسع</h3>
-          <p class="timeline-description">وسعنا فريقنا وخدماتنا لتشمل إنتاج الفيديو والموشن جرافيك.</p>
-        </div>
-      </div>
-      <div class="timeline-item scroll-fade-in">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-year">٢٠٢٣</div>
-          <h3 class="timeline-title">الاعتراف الإقليمي</h3>
-          <p class="timeline-description">أصبحنا من الاستوديوهات المرموقة في المنطقة، نخدم علامات تجارية عالمية.</p>
-        </div>
-      </div>
-      <div class="timeline-item scroll-fade-in">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <div class="timeline-year">٢٠٢٥</div>
-          <h3 class="timeline-title">الاستمرار في النمو</h3>
-          <p class="timeline-description">نستمر في التطور والابتكار، نبحث دائماً عن حلول إبداعية جديدة.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Mission & Vision -->
-  <section class="mission-vision">
-    <div class="container">
-      <div class="mission-card scroll-fade-in">
-        <h3>مهمتنا</h3>
-        <p>تمكين العلامات التجارية من رواية قصصها بصرياً بأسلوب مبتكر واحترافي، نخلق من خلالها تجارب تُحفز وتُلهم وتُحدث أثراً حقيقياً.</p>
+    <!-- Mission & Vision -->
+    <section class="mission-vision-wrapper">
+      <div class="container">
+        <div class="mission-vision">
+          <div class="mission-card scroll-fade-in">
+            <h3>مهمتنا</h3>
+            <p>تمكين العلامات التجارية من رواية قصصها بصرياً بأسلوب مبتكر واحترافي، نخلق من خلالها تجارب تُحفز وتُلهم وتُحدث أثراً حقيقياً.</p>
+          </div>
+          <div class="vision-card scroll-fade-in">
+            <h3>رؤيتنا</h3>
+            <p>أن نكون الاستوديو الإبداعي الأكثر تأثيراً في المنطقة، نرسخ معايير جديدة في صناعة المحتوى البصري ونكون شريكاً موثوقاً لكل علامة تجارية طموحة.</p>
+          </div>
+        </div>
       </div>
-      <div class="vision-card scroll-fade-in">
-        <h3>رؤيتنا</h3>
-        <p>أن نكون الاستوديو الإبداعي الأكثر تأثيراً في المنطقة، نرسخ معايير جديدة في صناعة المحتوى البصري ونكون شريكاً موثوقاً لكل علامة تجارية طموحة.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Clients Section -->
-  <section class="clients-section">
-    <div class="container">
-      <h2>عملاؤنا</h2>
-      <p>نفتخر بالعمل مع علامات تجارية مميزة ساهمنا في نجاح قصصها البصرية</p>
-      <div class="clients-grid">
-        <div class="client-logo scroll-fade-in">شركة تقنية</div>
-        <div class="client-logo scroll-fade-in">علامة أزياء</div>
-        <div class="client-logo scroll-fade-in">مطعم فاخر</div>
-        <div class="client-logo scroll-fade-in">شركة استشارات</div>
-        <div class="client-logo scroll-fade-in">متجر إلكتروني</div>
-        <div class="client-logo scroll-fade-in">صالة رياضية</div>
+    <!-- Clients Section -->
+    <section class="clients-section">
+      <div class="container">
+        <h2>عملاؤنا</h2>
+        <p>نفتخر بالعمل مع علامات تجارية مميزة ساهمنا في نجاح قصصها البصرية</p>
+        <div class="clients-grid">
+          <div class="client-logo scroll-fade-in">شركة تقنية</div>
+          <div class="client-logo scroll-fade-in">علامة أزياء</div>
+          <div class="client-logo scroll-fade-in">مطعم فاخر</div>
+          <div class="client-logo scroll-fade-in">شركة استشارات</div>
+          <div class="client-logo scroll-fade-in">متجر إلكتروني</div>
+          <div class="client-logo scroll-fade-in">صالة رياضية</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="container">
-      <h3 class="footer-logo">Sora Studio</h3>
-      <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
-      <div class="social-links">
-        <a href="#" class="social-link">إنستغرام</a>
-        <a href="#" class="social-link">بهانس</a>
-        <a href="#" class="social-link">لينكدإن</a>
-      </div>
-      <div class="footer-bottom">
-        <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
+      <div class="footer-content">
+        <h3 class="footer-logo">Sora Studio</h3>
+        <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
+
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Behance">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
