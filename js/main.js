@@ -1,218 +1,266 @@
-/* js/main.js – Sora Studio مع دعم GE SS Two وتحسينات إضافية
-   ======================================= */
+// js/main.js – Sora Studio
 
-/* ===========================
-   0. Safe Element Selector
-   =========================== */
-const safeQuery = (selector, context = document) => {
-  try { return context.querySelector(selector); } catch { return null; }
-};
-const safeQueryAll = (selector, context = document) => {
-  try { return Array.from(context.querySelectorAll(selector)); } catch { return []; }
-};
-
-/* ===========================
-   1. إخفاء Loader مباشرة
-   =========================== */
-function hideLoader() {
-  const loader = safeQuery('#loader');
+// 1) Loader – إخفاء شاشة التحميل بعد تحميل الصفحة بالكامل
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
   if (loader) {
-    setTimeout(() => loader.classList.add('hidden'), 500);
+    loader.classList.add("hidden");
+    // بعد الأنيميشن نخفيه نهائيًا
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 600);
   }
-}
-window.addEventListener('load', hideLoader);
-
-/* ===========================
-   2. Smooth Scrolling
-   =========================== */
-safeQueryAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = safeQuery(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
 });
 
-/* ===========================
-   3. Navbar Scroll Effect
-   =========================== */
-const navbar = safeQuery('#navbar');
-if (navbar) {
-  window.addEventListener('scroll', () => {
-    navbar.style.background = window.scrollY > 50
-      ? 'rgba(255, 255, 255, 0.98)'
-      : 'rgba(255, 255, 255, 0.95)';
-    navbar.style.boxShadow = window.scrollY > 50
-      ? '0 4px 20px rgba(0, 0, 0, 0.1)'
-      : 'none';
+// ننتظر DOM يجهز لباقي الوظائف
+document.addEventListener("DOMContentLoaded", () => {
+  setupMobileMenu();
+  setupSmoothScroll();
+  setupScrollAnimations();
+  setupPortfolio();
+  setupTeam();
+});
+
+/* ============================
+   2) منيو الجوال
+   ============================ */
+function setupMobileMenu() {
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (!mobileMenuBtn || !navLinks) return;
+
+  mobileMenuBtn.addEventListener("click", () => {
+    mobileMenuBtn.classList.toggle("active");
+    navLinks.classList.toggle("open");
+  });
+
+  // إغلاق المنيو بعد الضغط على أي رابط
+  navLinks.addEventListener("click", (e) => {
+    if (e.target.classList.contains("nav-link")) {
+      mobileMenuBtn.classList.remove("active");
+      navLinks.classList.remove("open");
+    }
   });
 }
 
-/* ===========================
-   4. Scroll Animations
-   =========================== */
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+/* ============================
+   3) سكرول ناعم للروابط الداخلية
+   ============================ */
+function setupSmoothScroll() {
+  const links = document.querySelectorAll('a[href^="#"]');
+
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      if (!targetId || targetId === "#") return;
+
+      const targetElement = document.querySelector(targetId);
+      if (!targetElement) return;
+
+      e.preventDefault();
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
   });
-}, observerOptions);
+}
 
-safeQueryAll('.scroll-fade-in').forEach(el => observer.observe(el));
+/* ============================
+   4) أنيميشن الظهور مع السحب (Scroll)
+   ============================ */
+function setupScrollAnimations() {
+  const elements = document.querySelectorAll(".scroll-fade-in");
 
-/* ===========================
-   5. Portfolio (only if exists)
-   =========================== */
-const portfolioGrid = safeQuery('#portfolioGrid');
-if (portfolioGrid) {
-  const projects = [
-    { id: 1, title: 'حملة تصويرية - علامة تجارية فاخرة', category: 'photo', description: 'تصوير منتجات فاخرة بأسلوب حديث مع إضاءة احترافية', tags: ['تصوير', 'منتجات'] },
-    { id: 2, title: 'فيديو ترويجي - شركة تقنية', category: 'video', description: 'فيديو ترويجي بأسلوب سينمائي مع رسومات حركية', tags: ['فيديو', 'موشن'] },
-    { id: 3, title: 'إعادة تصميم هوية بصرية', category: 'brand', description: 'تصميم هوية بصرية متكاملة لشركة ناشئة', tags: ['تصميم', 'هوية'] },
-    { id: 4, title: 'جلسة تصوير منتجات', category: 'photo', description: 'إضاءة احترافية لمنتجات العملاء بأسلوب minimal', tags: ['تصوير', 'منتجات'] },
-    { id: 5, title: 'فيديو موشن جرافيك', category: 'video', description: 'موشن جرافيك لشركة ناشئة لشرح المنتج', tags: ['فيديو', 'موشن'] },
-    { id: 6, title: 'شعار وتغليف منتج', category: 'brand', description: 'تصميم شعار وتغليف منتج بأسلوب عصري', tags: ['تصميم', 'تغليف'] }
-  ];
+  if (!("IntersectionObserver" in window)) {
+    // متصفح قديم – نظهر كل شيء بدون أنيميشن
+    elements.forEach((el) => el.classList.add("visible"));
+    return;
+  }
 
-  function renderPortfolio(filter = 'all') {
-    portfolioGrid.innerHTML = '';
-    const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
-    filtered.forEach((project, index) => {
-      const item = document.createElement('div');
-      item.className = 'portfolio-item scroll-fade-in';
-      item.style.animationDelay = `${index * 0.1}s`;
-      item.innerHTML = `
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
+/* ============================
+   5) بيانات الأعمال (Portfolio)
+   ============================ */
+const portfolioItemsData = [
+  {
+    title: "جلسة تصوير منتجات - براند قهوة",
+    category: "photo",
+    description: "تصوير منتجات احترافي مع إعداد كامل للإضاءة والخلفيات لبراند قهوة محلي.",
+    tags: ["تصوير منتجات", "ستوديو", "إضاءة ناعمة"]
+  },
+  {
+    title: "فيديو إعلان لمقهى حديث",
+    category: "video",
+    description: "إنتاج فيديو دعائي قصير لمقهى بطابع عصري، مخصص للسوشال ميديا.",
+    tags: ["فيديو إعلاني", "سوشال ميديا", "ستايل لايف ستايل"]
+  },
+  {
+    title: "هوية بصرية لعلامة أزياء",
+    category: "brand",
+    description: "تصميم شعار وهوية بصرية كاملة لعلامة أزياء سعودية ناشئة.",
+    tags: ["براندنج", "لوغو", "دليل استخدام"]
+  },
+  {
+    title: "تصوير بورتريه لروّاد أعمال",
+    category: "photo",
+    description: "جلسة تصوير بورتريه رسمية مع لمسة عصرية لرواد أعمال في الرياض.",
+    tags: ["بورتريه", "شخصي", "بروفايل مهني"]
+  },
+  {
+    title: "فيديو قصير لإطلاق تطبيق",
+    category: "video",
+    description: "موشن جرافيك + تصوير لقطات شاشة للتطبيق مع نصوص مخصصة.",
+    tags: ["موشن جرافيك", "فيديو منتج", "تطبيقات"]
+  },
+  {
+    title: "تصميم محتوى إنستقرام لعلامة تجارية",
+    category: "brand",
+    description: "テンبلت جاهزة لمحتوى إنستقرام مع نظام ألوان وهوية متكاملة.",
+    tags: ["سوشال ميديا", "テンبلت", "براندنج"]
+  }
+];
+
+/* ============================
+   6) تهيئة الـ Portfolio وعمل الفلترة
+   ============================ */
+function setupPortfolio() {
+  const portfolioGrid = document.getElementById("portfolioGrid");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+
+  if (!portfolioGrid) return;
+
+  // دالة لرسم الكروت
+  function renderPortfolio(items) {
+    portfolioGrid.innerHTML = "";
+
+    if (!items.length) {
+      portfolioGrid.innerHTML =
+        '<p class="text-center" style="color: var(--gray-500);">لا توجد أعمال تحت هذا التصنيف حاليًا.</p>';
+      return;
+    }
+
+    items.forEach((item) => {
+      const card = document.createElement("article");
+      card.className = "portfolio-item scroll-fade-in";
+      card.dataset.category = item.category;
+
+      card.innerHTML = `
         <div class="portfolio-image"></div>
         <div class="portfolio-content">
-          <h3 class="portfolio-title">${project.title}</h3>
-          <p class="portfolio-description">${project.description}</p>
+          <h3 class="portfolio-title">${item.title}</h3>
+          <p class="portfolio-description">${item.description}</p>
           <div class="portfolio-tags">
-            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            ${item.tags
+              .map((tag) => `<span class="tag">${tag}</span>`)
+              .join("")}
           </div>
         </div>
       `;
-      portfolioGrid.appendChild(item);
+
+      portfolioGrid.appendChild(card);
     });
+
+    // إعادة تفعيل أنيميشن السك롤 للعناصر الجديدة
+    setupScrollAnimations();
   }
 
-  // Filter buttons
-  safeQueryAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      safeQueryAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderPortfolio(btn.dataset.filter);
+  // أول رسم – الكل
+  renderPortfolio(portfolioItemsData);
+
+  // الفلترة حسب الزر
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter || "all";
+
+      // تغيير حالة الزر النشط
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      if (filter === "all") {
+        renderPortfolio(portfolioItemsData);
+      } else {
+        const filtered = portfolioItemsData.filter(
+          (item) => item.category === filter
+        );
+        renderPortfolio(filtered);
+      }
     });
   });
-
-  renderPortfolio(); // Render initially
 }
 
-/* ===========================
-   6. Team (only if exists)
-   =========================== */
-const teamGrid = safeQuery('#teamGrid');
-if (teamGrid) {
-  const team = [
-    { name: 'أحمد محمد', role: 'مدير إبداعي', bio: 'أكثر من 10 سنوات خبرة في الإدارة الإبداعية', initial: 'أ' },
-    { name: 'سارة أحمد', role: 'مصممة جرافيك', bio: 'متخصصة في تصميم الهويات البصرية', initial: 'س' },
-    { name: 'خالد حسن', role: 'مصور فوتوغرافي', bio: 'خبير في تصوير المنتجات والبورتريه', initial: 'خ' },
-    { name: 'ليلى مصطفى', role: 'منتجة فيديو', bio: 'متخصصة في إنتاج الفيديوهات التجارية', initial: 'ل' }
-  ];
+/* ============================
+   7) بيانات الفريق
+   ============================ */
+const teamMembersData = [
+  {
+    name: "محمد العتيبي",
+    role: "مصور رئيسي",
+    initials: "م",
+    bio: "متخصص في تصوير المنتجات والبورتريه مع خبرة تتجاوز ٦ سنوات في مجال الاستوديوهات التجارية."
+  },
+  {
+    name: "سارة القحطاني",
+    role: "مديرة إبداعية",
+    initials: "س",
+    bio: "تقود عملية تحويل أفكار العملاء إلى حملات بصرية متكاملة، من الفكرة حتى التنفيذ النهائي."
+  },
+  {
+    name: "عبدالله الشهري",
+    role: "مونتير وفيديوغرافر",
+    initials: "ع",
+    bio: "مسؤول عن تصوير وإخراج الفيديو وإضافة اللمسة السينمائية على مشاريع العملاء."
+  },
+  {
+    name: "نورة الدوسري",
+    role: "مصممة جرافيك",
+    initials: "ن",
+    bio: "تصميم هويات بصرية، محتوى سوشال ميديا، وقوالب جاهزة تعكس شخصية العلامة التجارية."
+  }
+];
 
-  team.forEach((member, index) => {
-    const memberEl = document.createElement('div');
-    memberEl.className = 'team-member scroll-fade-in';
-    memberEl.style.animationDelay = `${index * 0.1}s`;
-    memberEl.innerHTML = `
-      <div class="member-avatar">${member.initial}</div>
+/* ============================
+   8) تهيئة قسم الفريق
+   ============================ */
+function setupTeam() {
+  const teamGrid = document.getElementById("teamGrid");
+  if (!teamGrid) return;
+
+  teamGrid.innerHTML = "";
+
+  teamMembersData.forEach((member) => {
+    const card = document.createElement("article");
+    card.className = "team-member scroll-fade-in";
+
+    card.innerHTML = `
+      <div class="member-avatar">
+        <span>${member.initials}</span>
+      </div>
       <h3 class="member-name">${member.name}</h3>
       <p class="member-role">${member.role}</p>
       <p class="member-bio">${member.bio}</p>
     `;
-    teamGrid.appendChild(memberEl);
+
+    teamGrid.appendChild(card);
   });
+
+  // تفعيل أنيميشن السكول
+  setupScrollAnimations();
 }
-
-/* ===========================
-   7. Parallax Effect
-   =========================== */
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const heroBg = safeQuery('.hero-bg');
-  if (heroBg) {
-    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-  }
-});
-
-/* ===========================
-   8. Hover Effects (safe)
-   =========================== */
-document.addEventListener('mouseover', e => {
-  if (e.target.closest('.portfolio-item')) {
-    const item = e.target.closest('.portfolio-item');
-    item.style.transform = 'translateY(-8px) scale(1.02)';
-  }
-  if (e.target.closest('.team-member')) {
-    const member = e.target.closest('.team-member');
-    member.style.transform = 'translateY(-8px) scale(1.02)';
-  }
-});
-
-document.addEventListener('mouseout', e => {
-  if (e.target.closest('.portfolio-item')) {
-    e.target.closest('.portfolio-item').style.transform = 'translateY(0) scale(1)';
-  }
-  if (e.target.closest('.team-member')) {
-    e.target.closest('.team-member').style.transform = 'translateY(0) scale(1)';
-  }
-});
-
-/* ===========================
-   9. Mobile Menu Toggle
-   =========================== */
-const mobileMenuBtn = safeQuery('#mobileMenuBtn');
-if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenuBtn.classList.toggle('active');
-    // يمكنك إضافة منطق القائمة الجوالة هنا لاحقاً
-  });
-}
-
-/* ===========================
-   10. إخفاء عناصر الـ Loader إضافياً
-   =========================== */
-document.addEventListener('DOMContentLoaded', () => {
-  // تأكد أن الـ loader يُخفى حتى لو لم يعمل الـ JavaScript
-  setTimeout(() => {
-    const loader = safeQuery('#loader');
-    if (loader && !loader.classList.contains('hidden')) {
-      loader.classList.add('hidden');
-    }
-  }, 2000); // كحد أقصى 2 ثانية
-});
-
-/* ===========================
-   11. تحسينات إضافية للخط
-   =========================== */
-// إضافة كلاس arabic-text للعناصر التي تحتوي على نصوص عربية
-document.addEventListener('DOMContentLoaded', () => {
-  // تحسين عرض النصوص العربية
-  const arabicElements = document.querySelectorAll('h1, h2, h3, p, span, .nav-link, .btn, .tag');
-  arabicElements.forEach(el => {
-    if (el.textContent.match(/[\u0600-\u06FF]/)) {
-      el.classList.add('arabic-text');
-    }
-  });
-
-  // تحسين تجربة التمرير
-  document.documentElement.style.scrollBehavior = 'smooth';
-  
-  // إضافة تأثير تدرج ناعم عند التحميل
-  document.body.style.opacity = '0';
-  setTimeout(() => {
-    document.body.style.transition = 'opacity 0.5s ease';
-    document.body.style.opacity = '1';
-  }, 100);
-});
