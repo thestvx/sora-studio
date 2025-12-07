@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Sora Studio | صورة استوديو</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- خط Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Framer Motion من CDN -->
+  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Sora Studio</a>
+      <ul class="nav-links">
+        <li><a href="#portfolio">أعمالنا</a></li>
+        <li><a href="team.html">الفريق</a></li>
+        <li><a href="about.html">عنّا</a></li>
+        <li><a href="#contact">تواصل</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <video autoplay muted loop>
+      <source src="media/hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1 class="fade-in">Sora Studio</h1>
+      <p class="fade-in">نصنع القصص التي تُرى</p>
+      <div class="buttons fade-in">
+        <a href="#portfolio" class="btn primary">استكشف أعمالنا</a>
+        <a href="#contact" class="btn secondary">تواصل معنا</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2>أعمالنا</h2>
+      <p>نصنع القصص التي تُرى وتُتذكر</p>
+
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="photo">تصوير</button>
+        <button class="filter-btn" data-filter="video">فيديو</button>
+        <button class="filter-btn" data-filter="brand">تصميم</button>
+      </div>
+
+      <div class="grid" id="portfolio-grid">
+        <!-- عناصر Portfolio تُولّد بالجافاسكريبت -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="section bg-gray">
+    <div class="container">
+      <h2>فريق العمل</h2>
+      <p>نحن فريق من المحترفين المتحمسين</p>
+      <div class="grid" id="team-grid">
+        <!-- عناصر الفريق تُولّد بالجافاسكريبت -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h3>Sora Studio</h3>
+      <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
+      <div class="social">
+        <a href="#">Instagram</a>
+        <a href="#">Behance</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
