@@ -2,40 +2,43 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>Sora Studio | صورة استوديو</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sora Studio | صورة استوديو</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- خط Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Framer Motion من CDN -->
-  <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
 </head>
 <body>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+
   <!-- Navigation -->
-  <nav id="navbar">
-    <div class="container nav-inner">
+  <nav class="nav" id="navbar">
+    <div class="nav-container">
       <a href="index.html" class="logo">Sora Studio</a>
       <ul class="nav-links">
-        <li><a href="#portfolio">أعمالنا</a></li>
-        <li><a href="team.html">الفريق</a></li>
-        <li><a href="about.html">عنّا</a></li>
-        <li><a href="#contact">تواصل</a></li>
+        <li><a href="#portfolio" class="nav-link">أعمالنا</a></li>
+        <li><a href="#team" class="nav-link">الفريق</a></li>
+        <li><a href="#about" class="nav-link">عنّا</a></li>
+        <li><a href="#contact" class="nav-link">تواصل</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section id="hero">
-    <video autoplay muted loop>
-      <source src="media/hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
+  <section class="hero">
+    <div class="hero-bg"></div>
     <div class="hero-content">
-      <h1 class="fade-in">Sora Studio</h1>
-      <p class="fade-in">نصنع القصص التي تُرى</p>
-      <div class="buttons fade-in">
-        <a href="#portfolio" class="btn primary">استكشف أعمالنا</a>
-        <a href="#contact" class="btn secondary">تواصل معنا</a>
+      <h1 class="hero-title">نصنع القصص التي تُرى</h1>
+      <p class="hero-subtitle">استوديو إبداعي متخصص في التصوير، التصميم وإنتاج الفيديو</p>
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn btn-primary">استكشف أعمالنا</a>
+        <a href="#contact" class="btn btn-secondary">تواصل معنا</a>
       </div>
     </div>
   </section>
@@ -43,46 +46,74 @@
   <!-- Portfolio -->
   <section id="portfolio" class="section">
     <div class="container">
-      <h2>أعمالنا</h2>
-      <p>نصنع القصص التي تُرى وتُتذكر</p>
+      <div class="section-header">
+        <h2 class="section-title">أعمالنا</h2>
+        <p class="section-subtitle">نصنع القصص التي تُرى وتُتذكر</p>
+      </div>
 
-      <div class="filter-group">
+      <div class="portfolio-filter">
         <button class="filter-btn active" data-filter="all">الكل</button>
         <button class="filter-btn" data-filter="photo">تصوير</button>
         <button class="filter-btn" data-filter="video">فيديو</button>
         <button class="filter-btn" data-filter="brand">تصميم</button>
       </div>
 
-      <div class="grid" id="portfolio-grid">
-        <!-- عناصر Portfolio تُولّد بالجافاسكريبت -->
-      </div>
+      <div class="portfolio-grid" id="portfolioGrid"></div>
     </div>
   </section>
 
   <!-- Team -->
   <section id="team" class="section bg-gray">
     <div class="container">
-      <h2>فريق العمل</h2>
-      <p>نحن فريق من المحترفين المتحمسين</p>
-      <div class="grid" id="team-grid">
-        <!-- عناصر الفريق تُولّد بالجافاسكريبت -->
+      <div class="section-header">
+        <h2 class="section-title">فريق العمل</h2>
+        <p class="section-subtitle">نحن فريق من المحترفين المتحمسين</p>
+      </div>
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">عنّا</h2>
+        <p class="section-subtitle">نحن استوديو إبداعي متخصص في التصوير، التصميم، وإنتاج الفيديو</p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <h3>120+</h3>
+          <p>مشروع منفذ</p>
+        </div>
+        <div class="stat">
+          <h3>40+</h3>
+          <p>عميل</p>
+        </div>
+        <div class="stat">
+          <h3>6</h3>
+          <p>سنوات خبرة</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <h3>Sora Studio</h3>
-      <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
-      <div class="social">
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
-        <a href="#">LinkedIn</a>
+      <h3 class="footer-logo">Sora Studio</h3>
+      <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
+      <div class="social-links">
+        <a href="#" class="social-link">إنستغرام</a>
+        <a href="#" class="social-link">بهانس</a>
+        <a href="#" class="social-link">لينكدإن</a>
+      </div>
+      <div class="footer-bottom">
+        <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
       </div>
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script src="js/main.js"></script>
 </body>
 </html>
