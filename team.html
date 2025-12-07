@@ -2,46 +2,433 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>الفريق | Sora Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الفريق | Sora Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* أنماط خاصة بصفحة الفريق */
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 120px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff" fill-opacity="0.1" points="0,1000 1000,0 1000,1000"/></svg>');
+      background-size: cover;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .team-introduction {
+      text-align: center;
+      padding: 80px 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .team-introduction h2 {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+      color: var(--gray-900);
+    }
+
+    .team-introduction p {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+    }
+
+    .team-values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      padding: 80px 0;
+      background: var(--gray-50);
+    }
+
+    .value-card {
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .value-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--cyan), var(--cyan-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .value-title {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: var(--gray-900);
+    }
+
+    .value-description {
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .team-grid-detailed {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 48px;
+      padding: 80px 0;
+    }
+
+    .team-member-detailed {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .team-member-detailed:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .member-image {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .member-image::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s ease;
+    }
+
+    .team-member-detailed:hover .member-image::before {
+      transform: rotate(45deg) translate(100%, 100%);
+    }
+
+    .member-details {
+      padding: 32px;
+    }
+
+    .member-name {
+      font-size: 1.75rem;
+      margin-bottom: 8px;
+      color: var(--gray-900);
+    }
+
+    .member-role {
+      color: var(--cyan);
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+
+    .member-bio-detailed {
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .member-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      padding: 6px 12px;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .join-team {
+      text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--gray-900), var(--gray-800));
+      color: white;
+      margin-top: 80px;
+    }
+
+    .join-team h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .join-team p {
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+
+    .btn-join {
+      background: var(--cyan);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .btn-join:hover {
+      background: #00b3b2;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .team-grid-detailed {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .team-values {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <nav id="navbar">
-    <div class="container nav-inner">
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="nav-container">
       <a href="index.html" class="logo">Sora Studio</a>
       <ul class="nav-links">
-        <li><a href="index.html#portfolio">أعمالنا</a></li>
-        <li><a href="team.html">الفريق</a></li>
-        <li><a href="about.html">عنّا</a></li>
-        <li><a href="index.html#contact">تواصل</a></li>
+        <li><a href="index.html#portfolio" class="nav-link">أعمالنا</a></li>
+        <li><a href="team.html" class="nav-link">الفريق</a></li>
+        <li><a href="about.html" class="nav-link">عنّا</a></li>
+        <li><a href="index.html#contact" class="nav-link">تواصل</a></li>
       </ul>
     </div>
   </nav>
 
-  <section class="section">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <h1>فريق العمل</h1>
+      <p>نحن فريق من المحترفين المتحمسين لخلق تجارب بصرية استثنائية</p>
+    </div>
+  </section>
+
+  <!-- Team Introduction -->
+  <section class="team-introduction">
     <div class="container">
-      <h2>فريق العمل</h2>
-      <p>نحن فريق من المحترفين المتحمسين</p>
-      <div class="grid" id="team-page-grid">
-        <!-- عناصر الفريق تُولّد بالجافاسكريبت -->
+      <h2>نلتقي بالتحديات ونصنع الفرق</h2>
+      <p>في Sora Studio، نؤمن أن القوة الحقيقية تكمن في التعاون. فريقنا متعدد التخصصات يجمع بين الخبرة والشغف لتحويل الأفكار إلى واقع بصري مذهل.</p>
+    </div>
+  </section>
+
+  <!-- Team Values -->
+  <section class="team-values">
+    <div class="container">
+      <div class="value-card scroll-fade-in">
+        <div class="value-icon">🎨</div>
+        <h3 class="value-title">الإبداع</h3>
+        <p class="value-description">نبحث دائماً عن حلول مبتكرة ون pushing حدود ما هو ممكن في التصميم والتصوير.</p>
+      </div>
+      <div class="value-card scroll-fade-in">
+        <div class="value-icon">🤝</div>
+        <h3 class="value-title">العمل الجماعي</h3>
+        <p class="value-description">نعمل كفريق واحد، نتشارك الأفكار وندعم بعضنا البعض لتحقيق أفضل النتائج.</p>
+      </div>
+      <div class="value-card scroll-fade-in">
+        <div class="value-icon">⭐</div>
+        <h3 class="value-title">التميز</h3>
+        <p class="value-description">نلتزم بأعلى معايير الجودة في كل مشروع نعمل عليه.</p>
       </div>
     </div>
   </section>
 
-  <footer>
+  <!-- Detailed Team Grid -->
+  <section class="team-detailed">
     <div class="container">
-      <h3>Sora Studio</h3>
-      <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
-      <div class="social">
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
-        <a href="#">LinkedIn</a>
+      <div class="team-grid-detailed" id="teamGridDetailed"></div>
+    </div>
+  </section>
+
+  <!-- Join Team Section -->
+  <section class="join-team">
+    <div class="container">
+      <h2>هل ترغب بالانضمام لفريقنا؟</h2>
+      <p>نحن دائماً منفتحون على المواهب الجديدة. شاركنا بملفك وسنعاود التواصل قريباً.</p>
+      <a href="mailto:careers@sorastudio.com" class="btn-join">
+        <span>قدّم الآن</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <h3 class="footer-logo">Sora Studio</h3>
+      <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
+      <div class="social-links">
+        <a href="#" class="social-link">إنستغرام</a>
+        <a href="#" class="social-link">بهانس</a>
+        <a href="#" class="social-link">لينكدإن</a>
+      </div>
+      <div class="footer-bottom">
+        <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // بيانات الفريق المفصلة
+    const teamDetailed = [
+      {
+        name: 'أحمد محمد',
+        role: 'مدير إبداعي',
+        bio: 'أحمد هو القائد الإبداعي لفريقنا، مع أكثر من 10 سنوات من الخبرة في صناعة الإبداع. يتميز بقدرته الفائقة على تحويل الأفكار إلى رؤى بصرية مذهلة.',
+        skills: ['الإدارة الإبداعية', 'ستراتيجية العلامات التجارية', 'قيادة الفرق'],
+        initial: 'أ'
+      },
+      {
+        name: 'سارة أحمد',
+        role: 'مصممة جرافيك',
+        bio: 'سارة مصممة مبدعة متخصصة في تصميم الهويات البصرية والتصميم الجرافيكي. تعمل على إنشاء تصاميم فريدة تعكس شخصية كل علامة تجارية.',
+        skills: ['تصميم الهوية', 'تصميم الجرافيك', 'Adobe Creative Suite'],
+        initial: 'س'
+      },
+      {
+        name: 'خالد حسن',
+        role: 'مصور فوتوغرافي',
+        bio: 'خالد مصور محترف متخصص في تصوير المنتجات والبورتريه. يمتلك عينًا فنية لا مثيل لها في اختيار الزوايا والإضاءة المثالية.',
+        skills: ['تصوير المنتجات', 'تصوير البورتريه', 'تحرير الصور'],
+        initial: 'خ'
+      },
+      {
+        name: 'ليلى مصطفى',
+        role: 'منتجة فيديو',
+        bio: 'ليلى متخصصة في إنتاج الفيديوهات التجارية والموشن جرافيك. تحويل الأفكار إلى قصص مرئية مذهلة هو شغفها.',
+        skills: ['إنتاج الفيديو', 'الموشن جرافيك', 'تحرير الفيديو'],
+        initial: 'ل'
+      }
+    ];
+
+    // عرض الفريق المفصل
+    function renderTeamDetailed() {
+      const grid = document.getElementById('teamGridDetailed');
+      
+      teamDetailed.forEach((member, index) => {
+        const memberEl = document.createElement('div');
+        memberEl.className = 'team-member-detailed scroll-fade-in';
+        memberEl.style.animationDelay = `${index * 0.15}s`;
+        
+        memberEl.innerHTML = `
+          <div class="member-image">${member.initial}</div>
+          <div class="member-details">
+            <h3 class="member-name">${member.name}</h3>
+            <p class="member-role">${member.role}</p>
+            <p class="member-bio-detailed">${member.bio}</p>
+            <div class="member-skills">
+              ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+            </div>
+          </div>
+        `;
+        
+        grid.appendChild(memberEl);
+      });
+    }
+
+    // تهيئة الصفحة
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTeamDetailed();
+    });
+  </script>
 </body>
 </html>
