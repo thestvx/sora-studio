@@ -1,4 +1,4 @@
-/* css/style.css - Sora Studio Stylesheet
+/* css/style.css – Sora Studio Stylesheet مع خط GE SS Two
    ======================================= */
 
 /* ===================================
@@ -30,7 +30,7 @@
 }
 
 /* ===================================
-   2. Base Styles
+   2. Base Styles with GE SS Two
    =================================== */
 * {
   margin: 0;
@@ -44,19 +44,42 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'GE SS Two', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: var(--gray-800);
   background: var(--white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
 }
 
+/* GE SS Two for headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Satoshi', 'Inter', sans-serif;
+  font-family: 'GE SS Two', 'Satoshi', 'Inter', sans-serif;
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Regular weight for body text */
+p, span, div, li, a, button, input, textarea, select {
+  font-family: 'GE SS Two', 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* Bold for strong elements */
+strong, b, .font-bold {
+  font-family: 'GE SS Two', 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+/* Arabic text optimizations */
+.arabic-text {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  letter-spacing: normal;
 }
 
 img {
@@ -124,7 +147,7 @@ a {
 }
 
 /* ===================================
-   5. Navigation (محدث مع موبايل)
+   5. Navigation
    =================================== */
 .nav {
   position: fixed;
@@ -149,10 +172,11 @@ a {
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--gray-900);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.02em;
+  font-family: 'GE SS Two', sans-serif;
   transition: var(--transition);
 }
 
@@ -171,6 +195,8 @@ a {
   font-weight: 500;
   position: relative;
   transition: var(--transition);
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .nav-link:hover {
@@ -211,7 +237,7 @@ a {
 }
 
 /* ===================================
-   6. Hero Section (محدث مع مؤشر التمرير)
+   6. Hero Section
    =================================== */
 .hero {
   position: relative;
@@ -252,6 +278,10 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: heroFadeIn 1s ease-out;
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .hero-subtitle {
@@ -259,6 +289,8 @@ a {
   margin-bottom: 48px;
   opacity: 0.9;
   animation: heroFadeIn 1s ease-out 0.2s both;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .hero-buttons {
@@ -318,7 +350,7 @@ a {
 }
 
 /* ===================================
-   7. Buttons (محدث مع تأثيرات إضافية)
+   7. Buttons
    =================================== */
 .btn {
   padding: 16px 40px;
@@ -334,6 +366,8 @@ a {
   font-size: 16px;
   position: relative;
   overflow: hidden;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .btn::before {
@@ -388,6 +422,9 @@ a {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   margin-bottom: 24px;
   color: var(--gray-900);
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
@@ -395,10 +432,12 @@ a {
   color: var(--gray-600);
   max-width: 600px;
   margin: 0 auto;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 /* ===================================
-   9. Portfolio (محدث مع تأثيرات جديدة)
+   9. Portfolio
    =================================== */
 .portfolio-filter {
   display: flex;
@@ -419,6 +458,8 @@ a {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .filter-btn::before {
@@ -500,11 +541,14 @@ a {
   font-size: 1.5rem;
   margin-bottom: 12px;
   color: var(--gray-900);
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
 }
 
 .portfolio-description {
   color: var(--gray-600);
   margin-bottom: 20px;
+  font-family: 'GE SS Two', sans-serif;
 }
 
 .portfolio-tags {
@@ -521,6 +565,7 @@ a {
   font-size: 0.875rem;
   font-weight: 500;
   transition: var(--transition);
+  font-family: 'GE SS Two', sans-serif;
 }
 
 .portfolio-item:hover .tag {
@@ -529,7 +574,7 @@ a {
 }
 
 /* ===================================
-   10. Team (محدث مع تأثيرات جديدة)
+   10. Team
    =================================== */
 .team-grid {
   display: grid;
@@ -594,21 +639,26 @@ a {
   font-size: 1.5rem;
   margin-bottom: 8px;
   color: var(--gray-900);
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
 }
 
 .member-role {
   color: var(--cyan);
   font-weight: 600;
   margin-bottom: 16px;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .member-bio {
   color: var(--gray-600);
   line-height: 1.6;
+  font-family: 'GE SS Two', sans-serif;
 }
 
 /* ===================================
-   11. CTA Section (جديد)
+   11. CTA Section
    =================================== */
 .cta-section {
   padding: 100px 0;
@@ -640,16 +690,21 @@ a {
 .cta-section h2 {
   font-size: 2.5rem;
   margin-bottom: 16px;
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .cta-section p {
   font-size: 1.1rem;
   margin-bottom: 32px;
   opacity: 0.9;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 /* ===================================
-   12. Footer (محدث)
+   12. Footer
    =================================== */
 .footer {
   background: var(--gray-900);
@@ -671,11 +726,15 @@ a {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .footer-text {
   color: var(--gray-300);
   margin-bottom: 32px;
+  font-family: 'GE SS Two', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .social-links {
@@ -707,10 +766,11 @@ a {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 32px;
   color: var(--gray-400);
+  font-family: 'GE SS Two', sans-serif;
 }
 
 /* ===================================
-   13. Scroll Animations (محدث)
+   13. Scroll Animations
    =================================== */
 .scroll-fade-in {
   opacity: 0;
@@ -724,80 +784,7 @@ a {
 }
 
 /* ===================================
-   14. Mobile Menu (جديد)
-   =================================== */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 80%;
-  max-width: 300px;
-  height: 100vh;
-  background: var(--white);
-  box-shadow: -4px 0 20px rgba(0,0,0,0.1);
-  transition: right 0.3s ease;
-  z-index: 1000;
-  padding: 80px 24px 24px;
-}
-
-.mobile-menu.active {
-  right: 0;
-}
-
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition);
-}
-
-.mobile-menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.mobile-nav-links {
-  list-style: none;
-}
-
-.mobile-nav-links li {
-  margin-bottom: 24px;
-}
-
-.mobile-nav-link {
-  color: var(--gray-900);
-  font-size: 1.1rem;
-  font-weight: 500;
-  display: block;
-  padding: 12px 0;
-  transition: var(--transition);
-}
-
-.mobile-nav-link:hover {
-  color: var(--cyan);
-}
-
-/* Mobile Menu Button Animation */
-.mobile-menu-btn.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
-}
-
-/* ===================================
-   15. Responsive Design (محدث)
+   14. Responsive Design
    =================================== */
 @media (max-width: 768px) {
   .nav-links {
@@ -873,7 +860,7 @@ a {
 }
 
 /* ===================================
-   16. Dark Mode Support (جديد)
+   15. Dark Mode Support
    =================================== */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -905,7 +892,7 @@ a {
 }
 
 /* ===================================
-   17. Print Styles
+   16. Print Styles
    =================================== */
 @media print {
   .nav, .footer, .btn, .hero-scroll-indicator, .mobile-menu-btn {
@@ -927,20 +914,20 @@ a {
 }
 
 /* ===================================
-   18. High DPI / Retina Displays
+   17. High DPI / Retina Displays
    =================================== */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .logo {
-    font-weight: 600;
+    font-weight: 700;
   }
   
   .btn {
-    font-weight: 500;
+    font-weight: 600;
   }
 }
 
 /* ===================================
-   19. Reduced Motion Support
+   18. Reduced Motion Support
    =================================== */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -955,7 +942,7 @@ a {
 }
 
 /* ===================================
-   20. Focus Styles (Accessibility)
+   19. Focus Styles (Accessibility)
    =================================== */
 *:focus {
   outline: 2px solid var(--cyan);
@@ -967,6 +954,26 @@ a {
 .nav-link:focus {
   outline: 2px solid var(--cyan);
   outline-offset: 2px;
+}
+
+/* ===================================
+   20. Arabic Text Enhancements
+   =================================== */
+.arabic-text {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  letter-spacing: normal;
+}
+
+.hero-title,
+.section-title,
+.logo,
+.btn,
+.filter-btn,
+.member-name,
+.portfolio-title {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
 }
 
 /* Utility Classes */
@@ -991,4 +998,58 @@ a {
 /* Smooth transitions for all elements */
 * {
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* خط GE SS Two للعناوين الكبيرة */
+.hero-title,
+.section-title,
+.logo,
+.cta-section h2,
+.footer-logo {
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* خط GE SS Two Regular للنصوص العادية */
+body,
+p,
+span,
+div,
+li,
+a,
+button,
+input,
+textarea,
+select,
+.section-subtitle,
+.hero-subtitle,
+.member-bio,
+.portfolio-description,
+.footer-text,
+.tag,
+.meta-value,
+.meta-label,
+.timeline-description,
+.value-description,
+.hour-hours,
+.day-name {
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 400;
+}
+
+/* خط GE SS Two Bold للنصوص القوية */
+strong,
+b,
+.filter-btn,
+.nav-link,
+.member-role,
+.meta-value,
+.stat h3,
+.timeline-year,
+.faq-question,
+.submit-btn,
+.btn {
+  font-family: 'GE SS Two', sans-serif;
+  font-weight: 700;
 }
