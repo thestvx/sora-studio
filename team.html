@@ -3,19 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الفريق | Sora Studio</title>
+
+  <title>فريق العمل | Sora Studio - صورة استوديو</title>
+
+  <!-- Meta SEO -->
+  <meta name="description" content="تعرّف على فريق Sora Studio الإبداعي في الرياض، المصورين، المصممين، ومنتجي الفيديو الذين يقفون خلف أعمالنا البصرية.">
+  <meta name="keywords" content="الفريق, فريق العمل, Sora Studio, صورة استوديو, مصورين, مصممين, فيديو, الرياض">
+  <meta name="author" content="Sora Studio">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="فريق العمل | Sora Studio - صورة استوديو">
+  <meta property="og:description" content="نحن فريق من المحترفين المتحمسين لخلق تجارب بصرية استثنائية.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_SA">
 
   <!-- GE SS Two Font -->
   <link href="https://fonts.googleapis.com/css2?family=GE+SS+Two:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+
   <style>
     /* أنماط خاصة بصفحة الفريق */
     .page-header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 120px 0 80px;
+      padding: 140px 0 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -78,12 +91,18 @@
       letter-spacing: 0.5px;
     }
 
+    .team-values-wrapper {
+      background: var(--gray-50);
+    }
+
     .team-values {
+      padding: 80px 0;
+    }
+
+    .team-values-inner {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 40px;
-      padding: 80px 0;
-      background: var(--gray-50);
     }
 
     .value-card {
@@ -128,11 +147,14 @@
       letter-spacing: 0.5px;
     }
 
+    .team-detailed {
+      padding: 80px 0;
+    }
+
     .team-grid-detailed {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 48px;
-      padding: 80px 0;
     }
 
     .team-member-detailed {
@@ -227,7 +249,7 @@
       padding: 80px 0;
       background: linear-gradient(135deg, var(--gray-900), var(--gray-800));
       color: white;
-      margin-top: 80px;
+      margin-top: 40px;
     }
 
     .join-team h2 {
@@ -298,7 +320,7 @@
         gap: 32px;
       }
       
-      .team-values {
+      .team-values-inner {
         grid-template-columns: 1fr;
       }
     }
@@ -306,21 +328,21 @@
 </head>
 <body>
   <!-- Loader -->
-  <div class="loader" id="loader">
+  <div class="loader" id="loader" aria-hidden="true">
     <div class="loader-circle"></div>
   </div>
 
   <!-- Navigation -->
   <nav class="nav" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">Sora Studio</a>
+      <a href="index.html" class="logo" aria-label="Sora Studio - صورة استوديو">Sora Studio</a>
       <ul class="nav-links">
         <li><a href="index.html#portfolio" class="nav-link">أعمالنا</a></li>
-        <li><a href="team.html" class="nav-link">الفريق</a></li>
+        <li><a href="team.html" class="nav-link" aria-current="page">الفريق</a></li>
         <li><a href="about.html" class="nav-link">عنّا</a></li>
         <li><a href="index.html#contact" class="nav-link">تواصل</a></li>
       </ul>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح وإغلاق قائمة الجوال">
         <span></span>
         <span></span>
         <span></span>
@@ -328,123 +350,153 @@
     </div>
   </nav>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="page-header-content">
-      <h1>فريق العمل</h1>
-      <p>نحن فريق من المحترفين المتحمسين لخلق تجارب بصرية استثنائية</p>
-    </div>
-  </section>
-
-  <!-- Team Introduction -->
-  <section class="team-introduction">
-    <div class="container">
-      <h2>نلتقي بالتحديات ونصنع الفرق</h2>
-      <p>في Sora Studio، نؤمن أن القوة الحقيقية تكمن في التعاون. فريقنا متعدد التخصصات يجمع بين الخبرة والشغف لتحويل الأفكار إلى واقع بصري مذهل.</p>
-    </div>
-  </section>
-
-  <!-- Team Values -->
-  <section class="team-values">
-    <div class="container">
-      <div class="value-card scroll-fade-in">
-        <div class="value-icon">🎨</div>
-        <h3 class="value-title">الإبداع</h3>
-        <p class="value-description">نبحث دائماً عن حلول مبتكرة ون pushing حدود ما هو ممكن في التصميم والتصوير.</p>
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <h1>فريق العمل</h1>
+        <p>نحن فريق من المحترفين المتحمسين لخلق تجارب بصرية استثنائية</p>
       </div>
-      <div class="value-card scroll-fade-in">
-        <div class="value-icon">🤝</div>
-        <h3 class="value-title">العمل الجماعي</h3>
-        <p class="value-description">نعمل كفريق واحد، نتشارك الأفكار وندعم بعضنا البعض لتحقيق أفضل النتائج.</p>
-      </div>
-      <div class="value-card scroll-fade-in">
-        <div class="value-icon">⭐</div>
-        <h3 class="value-title">التميز</h3>
-        <p class="value-description">نلتزم بأعلى معايير الجودة في كل مشروع نعمل عليه.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Detailed Team Grid -->
-  <section class="team-detailed">
-    <div class="container">
-      <div class="team-grid-detailed" id="teamGridDetailed"></div>
-    </div>
-  </section>
+    <!-- Team Introduction -->
+    <section class="team-introduction">
+      <div class="container">
+        <div class="scroll-fade-in">
+          <h2>نلتقي بالتحديات ونصنع الفرق</h2>
+          <p>في Sora Studio، نؤمن أن القوة الحقيقية تكمن في التعاون. فريقنا متعدد التخصصات يجمع بين الخبرة والشغف لتحويل الأفكار إلى واقع بصري مذهل، من أول فكرة حتى آخر إطار.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Join Team Section -->
-  <section class="join-team">
-    <div class="container">
-      <h2>هل ترغب بالانضمام لفريقنا؟</h2>
-      <p>نحن دائماً منفتحون على المواهب الجديدة. شاركنا بملفك وسنعاود التواصل قريباً.</p>
-      <a href="mailto:careers@sorastudio.com" class="btn-join">
-        <span>قدّم الآن</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-        </svg>
-      </a>
-    </div>
-  </section>
+    <!-- Team Values -->
+    <section class="team-values-wrapper">
+      <div class="team-values">
+        <div class="container">
+          <div class="team-values-inner">
+            <div class="value-card scroll-fade-in">
+              <div class="value-icon" aria-hidden="true">🎨</div>
+              <h3 class="value-title">الإبداع</h3>
+              <p class="value-description">نبحث دائماً عن حلول مبتكرة، وندفع حدود ما هو ممكن في التصميم والتصوير والإخراج البصري.</p>
+            </div>
+            <div class="value-card scroll-fade-in">
+              <div class="value-icon" aria-hidden="true">🤝</div>
+              <h3 class="value-title">العمل الجماعي</h3>
+              <p class="value-description">نعمل كفريق واحد، نتشارك الأفكار وندعم بعضنا البعض لنضمن تجربة سلسة وممتعة لعملائنا.</p>
+            </div>
+            <div class="value-card scroll-fade-in">
+              <div class="value-icon" aria-hidden="true">⭐</div>
+              <h3 class="value-title">التميز</h3>
+              <p class="value-description">نلتزم بأعلى معايير الجودة في كل مشروع، مهما كان حجمه، من جلسة تصوير صغيرة إلى حملة كاملة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Team Grid -->
+    <section class="team-detailed">
+      <div class="container">
+        <div class="team-grid-detailed" id="teamGridDetailed"></div>
+      </div>
+    </section>
+
+    <!-- Join Team Section -->
+    <section class="join-team">
+      <div class="container">
+        <h2>هل ترغب بالانضمام لفريقنا؟</h2>
+        <p>نحن دائماً منفتحون على المواهب الجديدة في التصوير، التصميم، وإنتاج الفيديو. شاركنا بملفك وسنعاود التواصل قريباً.</p>
+        <a href="mailto:careers@sorastudio.com" class="btn-join">
+          <span>قدّم الآن</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <div class="container">
-      <h3 class="footer-logo">Sora Studio</h3>
-      <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
-      <div class="social-links">
-        <a href="#" class="social-link">إنستغرام</a>
-        <a href="#" class="social-link">بهانس</a>
-        <a href="#" class="social-link">لينكدإن</a>
-      </div>
-      <div class="footer-bottom">
-        <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
+      <div class="footer-content">
+        <h3 class="footer-logo">Sora Studio</h3>
+        <p class="footer-text">نصنع القصص التي تُرى وتُتذكر</p>
+
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Behance">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>صُنع بكل حب في الرياض © ٢٠٢٥</p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
   <script>
     // بيانات الفريق المفصلة
     const teamDetailed = [
       {
         name: 'أحمد محمد',
         role: 'مدير إبداعي',
-        bio: 'أحمد هو القائد الإبداعي لفريقنا، مع أكثر من 10 سنوات من الخبرة في صناعة الإبداع. يتميز بقدرته الفائقة على تحويل الأفكار إلى رؤى بصرية مذهلة.',
-        skills: ['الإدارة الإبداعية', 'ستراتيجية العلامات التجارية', 'قيادة الفرق'],
+        bio: 'أحمد هو القائد الإبداعي للفريق، مع أكثر من 10 سنوات من الخبرة في صناعة الإبداع. يتميز بقدرته على تحويل الأفكار إلى رؤى بصرية متكاملة.',
+        skills: ['الإدارة الإبداعية', 'استراتيجية العلامة التجارية', 'قيادة الفرق'],
         initial: 'أ'
       },
       {
         name: 'سارة أحمد',
         role: 'مصممة جرافيك',
-        bio: 'سارة مصممة مبدعة متخصصة في تصميم الهويات البصرية والتصميم الجرافيكي. تعمل على إنشاء تصاميم فريدة تعكس شخصية كل علامة تجارية.',
+        bio: 'سارة مصممة مبدعة متخصصة في الهويات البصرية وتصميم المحتوى، تصنع تصاميم تعكس شخصية كل علامة تجارية بدقة.',
         skills: ['تصميم الهوية', 'تصميم الجرافيك', 'Adobe Creative Suite'],
         initial: 'س'
       },
       {
         name: 'خالد حسن',
         role: 'مصور فوتوغرافي',
-        bio: 'خالد مصور محترف متخصص في تصوير المنتجات والبورتريه. يمتلك عينًا فنية لا مثيل لها في اختيار الزوايا والإضاءة المثالية.',
+        bio: 'خالد مصور محترف متخصص في تصوير المنتجات والبورتريه، يمتلك عينًا فنية في اختيار الزوايا والإضاءة المثالية.',
         skills: ['تصوير المنتجات', 'تصوير البورتريه', 'تحرير الصور'],
         initial: 'خ'
       },
       {
         name: 'ليلى مصطفى',
         role: 'منتجة فيديو',
-        bio: 'ليلى متخصصة في إنتاج الفيديوهات التجارية والموشن جرافيك. تحويل الأفكار إلى قصص مرئية مذهلة هو شغفها.',
+        bio: 'ليلى متخصصة في إنتاج الفيديوهات التجارية والموشن جرافيك، وتحويل الأفكار إلى قصص مرئية مؤثرة.',
         skills: ['إنتاج الفيديو', 'الموشن جرافيك', 'تحرير الفيديو'],
         initial: 'ل'
       }
     ];
 
-    // عرض الفريق المفصل
+    // عرض الفريق المفصّل
     function renderTeamDetailed() {
       const grid = document.getElementById('teamGridDetailed');
-      
+      if (!grid) return;
+
       teamDetailed.forEach((member, index) => {
-        const memberEl = document.createElement('div');
+        const memberEl = document.createElement('article');
         memberEl.className = 'team-member-detailed scroll-fade-in';
-        memberEl.style.animationDelay = `${index * 0.15}s`;
-        
+        memberEl.style.animationDelay = `${index * 0.1}s`;
+
         memberEl.innerHTML = `
           <div class="member-image">${member.initial}</div>
           <div class="member-details">
@@ -456,14 +508,17 @@
             </div>
           </div>
         `;
-        
+
         grid.appendChild(memberEl);
       });
     }
 
-    // تهيئة الصفحة
     document.addEventListener('DOMContentLoaded', () => {
       renderTeamDetailed();
+      // إعادة تفعيل أنيميشن السكروول للعناصر الجديدة
+      if (typeof setupScrollAnimations === 'function') {
+        setupScrollAnimations();
+      }
     });
   </script>
 </body>
